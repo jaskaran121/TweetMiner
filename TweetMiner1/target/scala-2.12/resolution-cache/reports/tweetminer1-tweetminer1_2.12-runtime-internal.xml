@@ -7,8 +7,20 @@
 		revision="1.0-SNAPSHOT"
 		conf="runtime-internal"
 		confs="compile, runtime, test, provided, optional, universal, universal-docs, universal-src, windows, docker, linux, rpm, debian, compile-internal, runtime-internal, test-internal, plugin, pom, scala-tool, docs"
-		date="20180728173357"/>
+		date="20180731184438"/>
 	<dependencies>
+		<module organisation="org.twitter4j" name="twitter4j-core">
+			<revision name="4.0.6" status="release" pubdate="20161225075758" resolver="sbt-chain" artresolver="sbt-chain" homepage="http://twitter4j.org/" downloaded="false" searched="false" default="false" conf="default, compile, runtime, default(compile), master" position="67">
+				<license name="Apache License 2.0" url="http://www.apache.org/licenses/LICENSE-2.0"/>
+				<metadata-artifact status="no" details="" size="3809" time="0" location="C:\Users\JASKARN SINGH\.ivy2\cache\org.twitter4j\twitter4j-core\ivy-4.0.6.xml" searched="false" origin-is-local="false" origin-location="https://repo1.maven.org/maven2/org/twitter4j/twitter4j-core/4.0.6/twitter4j-core-4.0.6.pom"/>
+				<caller organisation="tweetminer1" name="tweetminer1_2.12" conf="compile, runtime-internal, runtime, optional" rev="4.0.6" rev-constraint-default="4.0.6" rev-constraint-dynamic="4.0.6" callerrev="1.0-SNAPSHOT"/>
+				<artifacts>
+					<artifact name="twitter4j-core" type="jar" ext="jar" status="no" details="" size="305357" time="0" location="C:\Users\JASKARN SINGH\.ivy2\cache\org.twitter4j\twitter4j-core\jars\twitter4j-core-4.0.6.jar">
+						<origin-location is-local="false" location="https://repo1.maven.org/maven2/org/twitter4j/twitter4j-core/4.0.6/twitter4j-core-4.0.6.jar"/>
+					</artifact>
+				</artifacts>
+			</revision>
+		</module>
 		<module organisation="com.h2database" name="h2">
 			<revision name="1.4.197" status="release" pubdate="20180318162844" resolver="sbt-chain" artresolver="sbt-chain" homepage="http://www.h2database.com" downloaded="false" searched="false" default="false" conf="default, compile, runtime, default(compile), master" position="66">
 				<license name="MPL 2.0 or EPL 1.0" url="http://h2database.com/html/license.html"/>

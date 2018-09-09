@@ -1,0 +1,5 @@
+[0m[[0m[31merror[0m] [0m[0mC:\Users\JASKARN SINGH\Desktop\TweetMiner1\app\controllers\TweetMinerController.java:376:1: method render in class views.html.locationTweets cannot be applied to given types;[0m
+[0m[[0m[31merror[0m] [0m[0m  required: java.util.List<java.lang.String>,java.lang.String,java.lang.String[0m
+[0m[[0m[31merror[0m] [0m[0m  found: java.util.List<java.lang.String>,java.lang.String,java.lang.String,java.lang.String[0m
+[0m[[0m[31merror[0m] [0m[0m  reason: actual and formal argument lists differ in length[0m
+[0m[[0m[31merror[0m] [0m[0m	    return ok(views.html.locationTweets.render(final_one,latitude,longitude,address));[0m

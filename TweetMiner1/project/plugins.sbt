@@ -8,4 +8,5 @@ addSbtPlugin("com.typesafe.play" % "sbt-plugin" % "2.6.17")
 addSbtPlugin("com.typesafe.sbt" % "sbt-play-enhancer" % "1.2.2")
 // Eclipse plugin, see https://github.com/typesafehub/sbteclipse
 addSbtPlugin("com.typesafe.sbteclipse" % "sbteclipse-plugin" % "5.2.4")
-
+// The JaCoCo Plugin, see https://github.com/sbt/sbt-jacoco
+addSbtPlugin("com.github.sbt" % "sbt-jacoco" % "3.1.0")

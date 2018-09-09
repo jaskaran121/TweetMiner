@@ -1,0 +1,113 @@
+@(print:Map[String, Long])
+<!-- Author Gurdip -->
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<title>Word Level Statistics Table</title>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="@routes.Assets.versioned("stylesheets/bootstrap.min.css")">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="@routes.Assets.versioned("stylesheets/font-awesome.min.css")">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="@routes.Assets.versioned("stylesheets/animate.css")">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="@routes.Assets.versioned("stylesheets/select2.min.css")">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="@routes.Assets.versioned("stylesheets/perfect-scrollbar.css")">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="@routes.Assets.versioned("stylesheets/util.css")">
+	<link rel="stylesheet" type="text/css" href="@routes.Assets.versioned("stylesheets/main.css")">
+<!--===============================================================================================-->
+</head>
+<body>
+	
+	<div class="limiter">
+		<div class="container-table100">
+			<div class="wrap-table100">
+							<div class="table100 ver3 m-b-110">
+					<div class="table100-head">
+						<table>
+							<thead>
+								<tr class="row100 head">
+									<th>Word Level Statistics Table</th>
+									
+								</tr>
+							</thead>
+						</table>
+					</div>
+
+				</div>
+				<div class="table100 ver1 m-b-110">
+					
+					<div class="table100-head">
+						<table>
+							<thead>
+								<tr class="row100 head">
+									<th class="cell100 column1">Unique Word</th>
+									<th class="cell100 column2">Count</th>
+									
+								</tr>
+							</thead>
+						</table>
+					</div>
+					@for((str,t)<-print){
+
+					<div class="table100-body js-pscroll">
+						<table>
+							<tbody>
+								<tr class="row100 body">
+									<td class="cell100 column1">@str</td>
+									<td class="cell100 column2">@t</td>
+								</tr>
+							</tbody>
+						</table>
+					</div>
+					}
+				</div>
+				
+	
+
+
+
+
+
+
+			</div>
+		</div>
+	</div>
+
+
+<!--===============================================================================================-->	
+	<script src="@routes.Assets.versioned("javascripts/jquery-3.2.1.min.js")"></script>
+<!--===============================================================================================-->
+	<script src="@routes.Assets.versioned("javascripts/popper.js")"></script>
+	<script src="@routes.Assets.versioned("javascripts/bootstrap.min.js")"></script>
+<!--===============================================================================================-->
+	
+<!--===============================================================================================-->
+	<script src="@routes.Assets.versioned("javascripts/perfect-scrollbar.min.js")"></script>
+	<script>
+		$('.js-pscroll').each(function(){
+			var ps = new PerfectScrollbar(this);
+
+			$(window).on('resize', function(){
+				ps.update();
+			})
+		});
+			
+		
+	</script>
+<!--===============================================================================================-->
+	<script src="@routes.Assets.versioned("javascripts/main.js")"></script>
+
+</body>
+</html>
+<html><body>
+
+</body>
+</html>

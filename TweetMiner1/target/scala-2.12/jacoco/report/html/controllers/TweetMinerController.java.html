@@ -1,0 +1,382 @@
+<?xml version="1.0" encoding="utf-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>TweetMinerController.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=2;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">Jacoco Coverage Report</a> &gt; <a href="index.source.html" class="el_package">controllers</a> &gt; <span class="el_source">TweetMinerController.java</span></div><h1>TweetMinerController.java</h1><pre class="source lang-java linenums">package controllers;
+
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.HashMap;
+import java.util.LinkedHashMap;
+import java.util.List;
+import java.util.Map;
+import java.util.Set;
+import java.util.TooManyListenersException;
+import java.util.concurrent.CompletableFuture;
+import java.util.concurrent.CompletionStage;
+import java.util.stream.Collectors;
+import java.util.stream.Collector;
+import java.util.stream.Stream;
+import java.util.function.Function;
+import models.AuthorModel;
+import javax.inject.Inject;
+import com.fasterxml.jackson.databind.ser.std.ArraySerializerBase;
+import com.typesafe.config.Config;
+import com.typesafe.config.ConfigFactory;
+import models.TweetModel;
+import javassist.compiler.ast.Keyword;
+import models.SearchKeyword;
+import play.Logger.ALogger;
+import play.data.Form;
+import play.data.FormFactory;
+import play.mvc.Controller;
+import play.mvc.Result;
+import twitter4j.Twitter.*;
+import twitter4j.conf.ConfigurationBuilder;
+import twitter4j.*;
+import java.net.URLConnection;
+import java.net.HttpURLConnection;
+import java.net.URL;
+import java.net.URLEncoder;
+import java.io.InputStreamReader;
+import java.io.BufferedReader;
+import javax.xml.parsers.DocumentBuilder;
+import javax.xml.parsers.DocumentBuilderFactory;
+import javax.xml.xpath.XPath;
+import javax.xml.xpath.XPathExpression;
+import javax.xml.xpath.XPathFactory;
+import javax.xml.xpath.XPathConstants;
+import org.w3c.dom.Document;
+
+/**
+ * This TweetMinerController program contains multiple actions to 
+ * handle HTTP requests to the application's search page.
+ * @version 1.0
+ * @author Jaskaran Singh
+ * @author Gagandeep Singh
+ */
+public class TweetMinerController extends Controller {
+	@Inject
+	FormFactory formfactory;
+	Config config;
+	Twitter twitter;
+<span class="fc" id="L59">	private static ALogger logger = play.Logger.of(TweetMinerController.class);</span>
+	private final LinkedHashMap&lt;String,List&lt;TweetModel&gt;&gt; tweets;
+	private final LinkedHashMap&lt;String,List&lt;TweetModel&gt;&gt; tweetsFull;
+	
+	/**
+	 * This Default Constructor loads configuration to create  
+	 * twitter instance for authorization of Twitter4J API.
+	 */
+<span class="fc" id="L67">	public TweetMinerController() {</span>
+<span class="fc" id="L68">		config = ConfigFactory.load();</span>
+<span class="fc" id="L69">		tweets = new LinkedHashMap&lt;&gt;();</span>
+<span class="fc" id="L70">		tweetsFull=new LinkedHashMap&lt;&gt;();</span>
+<span class="fc" id="L71">		ConfigurationBuilder cb = new ConfigurationBuilder();</span>
+<span class="fc" id="L72">		cb.setDebugEnabled(true).setOAuthConsumerKey(config.getString(&quot;CONSUMER_KEY&quot;))</span>
+<span class="fc" id="L73">				.setOAuthConsumerSecret(config.getString(&quot;CONSUMER_SECRET&quot;))</span>
+<span class="fc" id="L74">				.setOAuthAccessToken(config.getString(&quot;ACCESS_TOKEN&quot;))</span>
+<span class="fc" id="L75">				.setOAuthAccessTokenSecret(config.getString(&quot;ACCESS_TOKEN_SECRET&quot;))</span>
+<span class="fc" id="L76">				.setTweetModeExtended(true);</span>
+<span class="fc" id="L77">		TwitterFactory tf = new TwitterFactory(cb.build());</span>
+<span class="fc" id="L78">		twitter = tf.getInstance();</span>
+
+<span class="fc" id="L80">	}</span>
+	/**
+	 * Renders home page.
+	 * 
+	 * This method declares Form Factory for managing UI forms.
+	 * Then, if the list of tweets is not empty, 
+	 * clears this list.
+	 * 
+	 * @return promise of a result to a rendered search home page.
+	 * @author Gagandeep
+	 */
+	public CompletionStage&lt;Result&gt; index() {
+<span class="nc" id="L92">		Form&lt;SearchKeyword&gt; form= formfactory.form(SearchKeyword.class);</span>
+<span class="nc bnc" id="L93" title="All 2 branches missed.">		if(!tweets.isEmpty())tweets.clear();</span>
+<span class="nc" id="L94">		return CompletableFuture.completedFuture(ok(views.html.listresult.render(form,tweets)));</span>
+		   
+    }
+	
+	/**
+	 * Renders the page containg the tweets list.
+	 * 
+	 * This method declares Form Factory for managing UI forms.
+	 * 
+	 * @return promise of a result to a rendered search home page.
+	 * @author Gagandeep
+	 */
+	public CompletionStage&lt;Result&gt; tweetrouter() {
+<span class="nc" id="L107">		Form&lt;SearchKeyword&gt; form= formfactory.form(SearchKeyword.class);</span>
+<span class="nc" id="L108">		return CompletableFuture.completedFuture(ok(views.html.listresult.render(form,tweets)));</span>
+		   
+    }
+	
+	/**
+	 * Handles tweet search based on keywords entered by client.
+	 * 
+	 * Retrieves a search string from a UI form. 
+	 * Then, creates instance of Query by calling Twitter4j API,sends this
+	 * instance to method getQueryResult. 
+	 * 
+	 * @return promise of a result with redirection to tweetrouter.
+	 * @author Gagandeep
+	 */
+	
+	public CompletionStage&lt;Result&gt; search()
+    {
+<span class="nc" id="L125">		CompletableFuture&lt;List&lt;TweetModel&gt;&gt; futureTweet = null;</span>
+	
+<span class="nc" id="L127">		Form&lt;SearchKeyword&gt; form = formfactory.form( SearchKeyword.class ).bindFromRequest(  );</span>
+<span class="nc" id="L128">        SearchKeyword keyword = form.get();</span>
+        
+<span class="nc" id="L130">        String word = keyword.getKeyword();</span>
+<span class="nc" id="L131">        Query searchString = new Query(word);</span>
+<span class="nc" id="L132">        searchString.setCount(100);</span>
+<span class="nc" id="L133">        form = formfactory.form( SearchKeyword.class );</span>
+<span class="nc" id="L134">        futureTweet = CompletableFuture.supplyAsync(() -&gt; getQueryResult(searchString));</span>
+<span class="nc" id="L135">        return futureTweet.thenCombine(futureTweet.thenApply((tweets)-&gt;setEmotioncount(tweets)),</span>
+<span class="nc" id="L136">        											(tweets,emotion)-&gt;{this.tweetsFull.put(word+&quot; &quot;+emotion, tweets); return this.tweets.put( word+&quot; &quot;+emotion,tweets.stream().limit(10).collect(Collectors.toList()));}).thenApply(tweets -&gt; {</span>
+        												
+        												return redirect(routes.TweetMinerController.tweetrouter());
+        									        });	
+        
+       
+    }
+	
+	/**
+	 * Determines sentiments of a search query.
+	 * 
+	 * Calculates happytweet,sadtweet,neutral tweet count. 
+	 * 
+	 * @param  list of tweets
+	 * @return string of emotion with highest count.
+	 * @author Prabhleen
+	 */
+	public String setEmotioncount(List&lt;TweetModel&gt; tweets) {
+		
+<span class="fc" id="L155">		Long happycount = tweets.stream().map(TweetModel::getTweet).filter(st-&gt;(st.contains(&quot;:-)&quot;)||st.contains(&quot;:)&quot;)) &amp;&amp; !(st.contains(&quot;:-(&quot;)||st.contains(&quot;:(&quot;))).count();</span>
+<span class="fc" id="L156">		Long sadcount = tweets.stream().map(TweetModel::getTweet).filter(st-&gt;(st.contains(&quot;:-(&quot;)||st.contains(&quot;:(&quot;)) &amp;&amp; !(st.contains(&quot;:-)&quot;)||st.contains(&quot;:)&quot;))).count();</span>
+<span class="fc" id="L157">		Long neutralcount =tweets.stream().map(TweetModel::getTweet).filter(st-&gt;!(st.contains(&quot;:-(&quot;)||st.contains(&quot;:(&quot;)) &amp;&amp; !(st.contains(&quot;:-)&quot;)||st.contains(&quot;:)&quot;))).count();</span>
+		
+<span class="fc" id="L159">		Long total=happycount+sadcount+neutralcount;</span>
+<span class="pc bpc" id="L160" title="1 of 2 branches missed.">		if(total!=0) {</span>
+<span class="fc bfc" id="L161" title="All 2 branches covered.">		if(((happycount*100)/total)&gt;70) {</span>
+<span class="fc" id="L162">			return &quot;:-)&quot;;</span>
+		}
+<span class="fc bfc" id="L164" title="All 2 branches covered.">		else if(((sadcount*100)/total)&gt;70) {</span>
+<span class="fc" id="L165">			return &quot;:-(&quot;;</span>
+		}
+		else {
+<span class="fc" id="L168">			return &quot;:-|&quot;;</span>
+		}
+		}
+<span class="nc" id="L171">		else {return &quot;:-|&quot;;}</span>
+			
+		}
+	/**
+	 * Queries the TwitterAPI to fetch tweet data.
+	 * 
+	 * Adds this tweet data to a list.
+	 * 
+	 * @param  searchString instance of type Query.          
+	 * @return list of type TweetModel
+	 * @author Jaskaran
+	 * @throws TwitterException It throws a TwitterException
+	 */
+
+	public List&lt;TweetModel&gt; getQueryResult(Query searchString)
+	{
+<span class="nc" id="L187">		List&lt;TweetModel&gt; resultTweets = null;</span>
+		try {
+<span class="nc" id="L189">		QueryResult getResult = twitter.search(searchString);</span>
+
+<span class="nc" id="L191">		List&lt;Status&gt; tweets = getResult.getTweets();</span>
+		AuthorModel author;
+		TweetModel tweetModel;
+<span class="nc" id="L194">		resultTweets = new ArrayList&lt;&gt;();</span>
+<span class="nc bnc" id="L195" title="All 2 branches missed.">		for (Status s : tweets) {</span>
+<span class="nc" id="L196">			author = new AuthorModel();</span>
+<span class="nc" id="L197">			author.setName(s.getUser().getName());</span>
+<span class="nc" id="L198">			author.setScreenName(s.getUser().getScreenName());</span>
+<span class="nc" id="L199">			tweetModel = new TweetModel();</span>
+<span class="nc" id="L200">			tweetModel.setAuthor(author);</span>
+<span class="nc" id="L201">			tweetModel.setTweet(s.getText());</span>
+<span class="nc" id="L202">			tweetModel.setHashtags(Arrays.asList(s.getHashtagEntities()));</span>
+<span class="nc bnc" id="L203" title="All 2 branches missed.">			if(s.getGeoLocation()!=null) {</span>
+<span class="nc" id="L204">				tweetModel.setGeoLocation(s.getGeoLocation().toString());</span>
+<span class="nc" id="L205">			tweetModel.setLatitude(s.getGeoLocation().getLatitude());</span>
+<span class="nc" id="L206">			tweetModel.setLongitude(s.getGeoLocation().getLongitude());}</span>
+<span class="nc bnc" id="L207" title="All 2 branches missed.">			if(s.getUser().getLocation()!=null) tweetModel.setLocation(s.getUser().getLocation());</span>
+<span class="nc" id="L208">			resultTweets.add(tweetModel);</span>
+<span class="nc" id="L209">		}</span>
+		
+<span class="nc" id="L211">		} catch (TwitterException exp) {</span>
+			
+<span class="nc" id="L213">		}</span>
+		
+<span class="nc" id="L215">		return resultTweets;</span>
+	}
+	
+	/**
+	 * Renders User Data page.
+	 * 
+	 * Queries Twitter4j API to fetch personal data of tweet owner.
+	 * 
+	 * @param  screenName of owner of type String.      
+	 * @return promise of a result to a rendered user profile page.
+	 * @author Gagandeep
+	 * @throws TwitterException It throws a TwitterException
+	 */
+	public CompletableFuture&lt;Result&gt; getUserData(String screenName) throws TwitterException
+	{
+
+<span class="nc" id="L231">		CompletableFuture&lt;User&gt; futureUser = CompletableFuture.supplyAsync(() -&gt; {</span>
+			User user = null;
+			try {
+				
+				user = twitter.showUser(screenName);
+			} catch (TwitterException exp) {
+				
+			}
+			return user;
+		});
+<span class="nc" id="L241">		CompletableFuture&lt;ResponseList&lt;Status&gt;&gt; futureRecentPost = CompletableFuture.supplyAsync(() -&gt; {</span>
+			ResponseList&lt;Status&gt; recentPost = null;
+			try {
+				recentPost = twitter.getUserTimeline(screenName);
+			} catch (TwitterException exp) {
+				
+			}
+			return recentPost;
+		});
+<span class="nc" id="L250">		return futureUser.thenCombine(futureRecentPost, (user,recentPost)-&gt;ok(views.html.UserData.render(user, recentPost)));</span>
+	}
+	
+	
+	/**
+	 * Renders WordLevelStatistics page.
+	 * 
+	 * Calculates count of each word,mapping of 
+	 * word with its count.
+	 * Sorting this Map in descending order.
+	 * 
+	 * @param  searchKeyword location to be searched of type String.      
+	 * @return promise of a result to a rendered WordLevelStatistics page.
+	 * @author Gurdip
+	 */
+	
+	public CompletionStage&lt;Result&gt; appendString(String searchKeyword)
+	{
+<span class="nc" id="L268">        List&lt;TweetModel&gt; l=this.tweetsFull.get(searchKeyword);</span>
+<span class="nc" id="L269">        String str=l.stream().map(TweetModel::getTweet).reduce(&quot;&quot;,(String t1,String t2)-&gt;t1+t2);</span>
+<span class="nc" id="L270">        String words = str.replaceAll(&quot;[^\\w\\s]&quot;, &quot;&quot;); </span>
+<span class="nc" id="L271">		String formatted = words.trim().replaceAll(&quot; +&quot;, &quot; &quot;);</span>
+<span class="nc" id="L272">		List&lt;String&gt; words1 = Arrays.asList(formatted.split(&quot;\\s&quot;));</span>
+<span class="nc" id="L273">		 Map&lt;String, Long&gt; result =</span>
+<span class="nc" id="L274">	                words1.stream().map(String::toLowerCase).collect(</span>
+<span class="nc" id="L275">	                        Collectors.groupingBy(</span>
+<span class="nc" id="L276">	                                Function.identity(), Collectors.counting()));</span>
+		 
+		 
+<span class="nc" id="L279">		 Map&lt;String, Long&gt; secondMap = new LinkedHashMap&lt;&gt;();</span>
+		 
+<span class="nc" id="L281">		 result.entrySet().stream()</span>
+<span class="nc" id="L282">         .sorted(Map.Entry.&lt;String, Long&gt;comparingByValue()</span>
+<span class="nc" id="L283">                 .reversed()).forEachOrdered(e -&gt; secondMap.put(e.getKey(), e.getValue()));</span>
+		 
+<span class="nc" id="L285">		return  CompletableFuture.completedFuture( ok(views.html.WordLevelStatistics.render(secondMap)));</span>
+	}
+	
+	
+	
+	
+	
+	
+	
+	
+	/**
+	 * Renders hashTaglistresult page.
+	 * 
+	 * Queries Twitter API for hashtagkeywords.
+	 * 
+	 * @param searchKeyword of Type String.      
+	 * @return promise of a result to a rendered hashTaglistresult page.
+	 * @author Jaskaran
+	 */
+	
+	public CompletionStage&lt;Result&gt; searchHashTag(String searchKeyword)
+	{
+<span class="nc" id="L307">		CompletableFuture&lt;List&lt;TweetModel&gt;&gt; futureTweet = null;</span>
+<span class="nc" id="L308">		Query searchString = new Query(&quot;#&quot;+searchKeyword);</span>
+<span class="nc" id="L309">        searchString.setCount(10);</span>
+     
+<span class="nc" id="L311">        futureTweet = CompletableFuture.supplyAsync(() -&gt; getQueryResult(searchString));</span>
+        
+<span class="nc" id="L313">        return futureTweet.thenApply(tweets -&gt; {</span>
+			
+			return ok(views.html.hashTaglistresult.render(&quot;#&quot;+searchKeyword,tweets));
+	});
+	
+	}
+	
+	/**
+	 * Renders locationTweets page.
+	 * 
+	 * Queries Twitter API to fetch tweets by location.
+	 * 
+	 * @param keyword of Type String.      
+	 * @return list of tweets,coordinates of Location.
+	 * @author Amankirat
+	 * @throws TwitterException It throws a API Error exception
+	 */
+
+	public Result getLatLongPositions(String address) throws Exception
+	  {
+<span class="nc" id="L333">int responseCode = 0;</span>
+ 
+<span class="nc" id="L335">String api = &quot;http://maps.googleapis.com/maps/api/geocode/xml?address=&quot; + URLEncoder.encode(address, &quot;UTF-8&quot;) + &quot;&amp;sensor=true&quot;;</span>
+<span class="nc" id="L336">	    URL url = new URL(api);</span>
+<span class="nc" id="L337">	    HttpURLConnection httpConnection = (HttpURLConnection)url.openConnection();</span>
+<span class="nc" id="L338">	    httpConnection.connect();</span>
+<span class="nc" id="L339">	    responseCode = httpConnection.getResponseCode();</span>
+<span class="nc" id="L340">	    String latitude=&quot;&quot;;</span>
+<span class="nc" id="L341">	      String longitude =&quot;&quot;;</span>
+<span class="nc bnc" id="L342" title="All 2 branches missed.">	    if(responseCode == 200)</span>
+	    {
+<span class="nc" id="L344">	      DocumentBuilder builder = DocumentBuilderFactory.newInstance().newDocumentBuilder();;</span>
+<span class="nc" id="L345">	      Document document = builder.parse(httpConnection.getInputStream());</span>
+<span class="nc" id="L346">	      XPathFactory xPathfactory = XPathFactory.newInstance();</span>
+<span class="nc" id="L347">	      XPath xpath = xPathfactory.newXPath();</span>
+<span class="nc" id="L348">	      XPathExpression expr = xpath.compile(&quot;/GeocodeResponse/status&quot;);</span>
+<span class="nc" id="L349">	      String status = (String)expr.evaluate(document, XPathConstants.STRING);</span>
+	      
+<span class="nc bnc" id="L351" title="All 2 branches missed.">	      if(status.equals(&quot;OK&quot;))</span>
+	      {
+<span class="nc" id="L353">	         expr = xpath.compile(&quot;//geometry/location/lat&quot;);</span>
+<span class="nc" id="L354">	         latitude = (String)expr.evaluate(document, XPathConstants.STRING);</span>
+<span class="nc" id="L355">	         expr = xpath.compile(&quot;//geometry/location/lng&quot;);</span>
+<span class="nc" id="L356">	         longitude = (String)expr.evaluate(document, XPathConstants.STRING);</span>
+	        
+	      }
+	      else
+	      {
+<span class="nc" id="L361">	         throw new Exception(&quot;Error from the API - response status: &quot;+status);</span>
+	      }
+	    }
+	    
+<span class="nc" id="L365">	     GeoLocation geo = new GeoLocation(Double.parseDouble(latitude),Double.parseDouble(longitude));</span>
+	   
+<span class="nc" id="L367">	    List&lt;String&gt; final_one = new ArrayList&lt;&gt;();</span>
+<span class="nc" id="L368">	    QueryResult getResult = twitter.search(new Query().geoCode(geo, 50, &quot;1km&quot;));</span>
+<span class="nc" id="L369">	    List&lt;Status&gt; tweets = getResult.getTweets();</span>
+<span class="nc bnc" id="L370" title="All 2 branches missed.">	    for(Status s:tweets)</span>
+	    {
+<span class="nc" id="L372">	    	final_one.add(s.getText());</span>
+<span class="nc bnc" id="L373" title="All 2 branches missed.">	    	if(final_one.size()==10)</span>
+<span class="nc" id="L374">	    		break;</span>
+<span class="nc" id="L375">	    }</span>
+<span class="nc" id="L376">	    return ok(views.html.locationTweets.render(final_one,latitude,longitude));</span>
+	  }
+	
+	
+	
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.7.9.201702052155</span></div></body></html>

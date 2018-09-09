@@ -13,6 +13,10 @@ libraryDependencies += guice
 // Test Database
 libraryDependencies += "com.h2database" % "h2" % "1.4.197"
 
+libraryDependencies += "org.twitter4j" % "twitter4j-core" % "4.0.6"
+// https://mvnrepository.com/artifact/org.mockito/mockito-all
+libraryDependencies += "org.mockito" % "mockito-all" % "1.10.19" % Test
+
 // Testing libraries for dealing with CompletionStage...
 libraryDependencies += "org.assertj" % "assertj-core" % "3.6.2" % Test
 libraryDependencies += "org.awaitility" % "awaitility" % "2.0.0" % Test

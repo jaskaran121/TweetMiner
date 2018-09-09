@@ -1,0 +1,169 @@
+<?xml version="1.0" encoding="utf-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>WordLevelStatistics.template.scala</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=2;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">Jacoco Coverage Report</a> &gt; <a href="index.source.html" class="el_package">views.html</a> &gt; <span class="el_source">WordLevelStatistics.template.scala</span></div><h1>WordLevelStatistics.template.scala</h1><pre class="source lang-java linenums">
+package views.html
+
+import _root_.play.twirl.api.TwirlFeatureImports._
+import _root_.play.twirl.api.TwirlHelperImports._
+import _root_.play.twirl.api.Html
+import _root_.play.twirl.api.JavaScript
+import _root_.play.twirl.api.Txt
+import _root_.play.twirl.api.Xml
+import models._
+import controllers._
+import play.api.i18n._
+import views.html._
+import play.api.templates.PlayMagic._
+import java.lang._
+import java.util._
+import scala.collection.JavaConverters._
+import play.core.j.PlayMagicForJava._
+import play.mvc._
+import play.api.data.Field
+import play.mvc.Http.Context.Implicit._
+import play.data._
+import play.core.j.PlayFormsMagicForJava._
+
+<span class="nc" id="L25">object WordLevelStatistics extends _root_.play.twirl.api.BaseScalaTemplate[play.twirl.api.HtmlFormat.Appendable,_root_.play.twirl.api.Format[play.twirl.api.HtmlFormat.Appendable]](play.twirl.api.HtmlFormat) with _root_.play.twirl.api.Template1[Map[String, Long],play.twirl.api.HtmlFormat.Appendable] {</span>
+
+  /**/
+  def apply/*1.2*/(print:Map[String, Long]):play.twirl.api.HtmlFormat.Appendable = {
+<span class="nc" id="L29">    _display_ {</span>
+      {
+
+
+<span class="nc" id="L33">Seq[Any](format.raw/*1.27*/(&quot;&quot;&quot;</span>
+<span class="nc" id="L34">&quot;&quot;&quot;),format.raw/*2.1*/(&quot;&quot;&quot;&lt;!-- Author Gurdip --&gt;</span>
+
+
+&lt;!DOCTYPE html&gt;
+&lt;html lang=&quot;en&quot;&gt;
+&lt;head&gt;
+	&lt;title&gt;Word Level Statistics Table&lt;/title&gt;
+	&lt;meta charset=&quot;UTF-8&quot;&gt;
+	&lt;meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1&quot;&gt;
+
+&lt;!--===============================================================================================--&gt;
+<span class="nc" id="L45">	&lt;link rel=&quot;stylesheet&quot; type=&quot;text/css&quot; href=&quot;&quot;&quot;&quot;),_display_(/*13.48*/routes/*13.54*/.Assets.versioned(&quot;stylesheets/bootstrap.min.css&quot;)),format.raw/*13.104*/(&quot;&quot;&quot;&quot;&gt;</span>
+&lt;!--===============================================================================================--&gt;
+<span class="nc" id="L47">	&lt;link rel=&quot;stylesheet&quot; type=&quot;text/css&quot; href=&quot;&quot;&quot;&quot;),_display_(/*15.48*/routes/*15.54*/.Assets.versioned(&quot;stylesheets/font-awesome.min.css&quot;)),format.raw/*15.107*/(&quot;&quot;&quot;&quot;&gt;</span>
+&lt;!--===============================================================================================--&gt;
+<span class="nc" id="L49">	&lt;link rel=&quot;stylesheet&quot; type=&quot;text/css&quot; href=&quot;&quot;&quot;&quot;),_display_(/*17.48*/routes/*17.54*/.Assets.versioned(&quot;stylesheets/animate.css&quot;)),format.raw/*17.98*/(&quot;&quot;&quot;&quot;&gt;</span>
+&lt;!--===============================================================================================--&gt;
+<span class="nc" id="L51">	&lt;link rel=&quot;stylesheet&quot; type=&quot;text/css&quot; href=&quot;&quot;&quot;&quot;),_display_(/*19.48*/routes/*19.54*/.Assets.versioned(&quot;stylesheets/select2.min.css&quot;)),format.raw/*19.102*/(&quot;&quot;&quot;&quot;&gt;</span>
+&lt;!--===============================================================================================--&gt;
+<span class="nc" id="L53">	&lt;link rel=&quot;stylesheet&quot; type=&quot;text/css&quot; href=&quot;&quot;&quot;&quot;),_display_(/*21.48*/routes/*21.54*/.Assets.versioned(&quot;stylesheets/perfect-scrollbar.css&quot;)),format.raw/*21.108*/(&quot;&quot;&quot;&quot;&gt;</span>
+&lt;!--===============================================================================================--&gt;
+<span class="nc" id="L55">	&lt;link rel=&quot;stylesheet&quot; type=&quot;text/css&quot; href=&quot;&quot;&quot;&quot;),_display_(/*23.48*/routes/*23.54*/.Assets.versioned(&quot;stylesheets/util.css&quot;)),format.raw/*23.95*/(&quot;&quot;&quot;&quot;&gt;</span>
+<span class="nc" id="L56">	&lt;link rel=&quot;stylesheet&quot; type=&quot;text/css&quot; href=&quot;&quot;&quot;&quot;),_display_(/*24.48*/routes/*24.54*/.Assets.versioned(&quot;stylesheets/main.css&quot;)),format.raw/*24.95*/(&quot;&quot;&quot;&quot;&gt;</span>
+&lt;!--===============================================================================================--&gt;
+&lt;/head&gt;
+&lt;body&gt;
+	
+	&lt;div class=&quot;limiter&quot;&gt;
+		&lt;div class=&quot;container-table100&quot;&gt;
+			&lt;div class=&quot;wrap-table100&quot;&gt;
+							&lt;div class=&quot;table100 ver3 m-b-110&quot;&gt;
+					&lt;div class=&quot;table100-head&quot;&gt;
+						&lt;table&gt;
+							&lt;thead&gt;
+								&lt;tr class=&quot;row100 head&quot;&gt;
+									&lt;th&gt;Word Level Statistics Table&lt;/th&gt;
+									
+								&lt;/tr&gt;
+							&lt;/thead&gt;
+						&lt;/table&gt;
+					&lt;/div&gt;
+
+				&lt;/div&gt;
+				&lt;div class=&quot;table100 ver1 m-b-110&quot;&gt;
+					
+					&lt;div class=&quot;table100-head&quot;&gt;
+						&lt;table&gt;
+							&lt;thead&gt;
+								&lt;tr class=&quot;row100 head&quot;&gt;
+									&lt;th class=&quot;cell100 column1&quot;&gt;Unique Word&lt;/th&gt;
+									&lt;th class=&quot;cell100 column2&quot;&gt;Count&lt;/th&gt;
+									
+								&lt;/tr&gt;
+							&lt;/thead&gt;
+						&lt;/table&gt;
+					&lt;/div&gt;
+<span class="nc" id="L90">					&quot;&quot;&quot;),_display_(/*58.7*/for((str,t)&lt;-print) yield /*58.26*/{_display_(Seq[Any](format.raw/*58.27*/(&quot;&quot;&quot;</span>
+
+					&quot;&quot;&quot;),format.raw/*60.6*/(&quot;&quot;&quot;&lt;div class=&quot;table100-body js-pscroll&quot;&gt;
+						&lt;table&gt;
+							&lt;tbody&gt;
+								&lt;tr class=&quot;row100 body&quot;&gt;
+									&lt;td class=&quot;cell100 column1&quot;&gt;&quot;&quot;&quot;),_display_(/*64.39*/str),format.raw/*64.42*/(&quot;&quot;&quot;&lt;/td&gt;
+									&lt;td class=&quot;cell100 column2&quot;&gt;&quot;&quot;&quot;),_display_(/*65.39*/t),format.raw/*65.40*/(&quot;&quot;&quot;&lt;/td&gt;
+								&lt;/tr&gt;
+							&lt;/tbody&gt;
+						&lt;/table&gt;
+					&lt;/div&gt;
+<span class="nc" id="L102">					&quot;&quot;&quot;)))}),format.raw/*70.7*/(&quot;&quot;&quot;</span>
+<span class="nc" id="L103">				&quot;&quot;&quot;),format.raw/*71.5*/(&quot;&quot;&quot;&lt;/div&gt;</span>
+				
+	
+
+
+
+
+
+
+			&lt;/div&gt;
+		&lt;/div&gt;
+	&lt;/div&gt;
+
+
+&lt;!--===============================================================================================--&gt;	
+<span class="nc" id="L118">	&lt;script src=&quot;&quot;&quot;&quot;),_display_(/*86.16*/routes/*86.22*/.Assets.versioned(&quot;javascripts/jquery-3.2.1.min.js&quot;)),format.raw/*86.74*/(&quot;&quot;&quot;&quot;&gt;&lt;/script&gt;</span>
+&lt;!--===============================================================================================--&gt;
+<span class="nc" id="L120">	&lt;script src=&quot;&quot;&quot;&quot;),_display_(/*88.16*/routes/*88.22*/.Assets.versioned(&quot;javascripts/popper.js&quot;)),format.raw/*88.64*/(&quot;&quot;&quot;&quot;&gt;&lt;/script&gt;</span>
+<span class="nc" id="L121">	&lt;script src=&quot;&quot;&quot;&quot;),_display_(/*89.16*/routes/*89.22*/.Assets.versioned(&quot;javascripts/bootstrap.min.js&quot;)),format.raw/*89.71*/(&quot;&quot;&quot;&quot;&gt;&lt;/script&gt;</span>
+&lt;!--===============================================================================================--&gt;
+	
+&lt;!--===============================================================================================--&gt;
+<span class="nc" id="L125">	&lt;script src=&quot;&quot;&quot;&quot;),_display_(/*93.16*/routes/*93.22*/.Assets.versioned(&quot;javascripts/perfect-scrollbar.min.js&quot;)),format.raw/*93.79*/(&quot;&quot;&quot;&quot;&gt;&lt;/script&gt;</span>
+	&lt;script&gt;
+<span class="nc" id="L127">		$('.js-pscroll').each(function()&quot;&quot;&quot;),format.raw/*95.35*/(&quot;&quot;&quot;{&quot;&quot;&quot;),format.raw/*95.36*/(&quot;&quot;&quot;</span>
+<span class="nc" id="L128">			&quot;&quot;&quot;),format.raw/*96.4*/(&quot;&quot;&quot;var ps = new PerfectScrollbar(this);</span>
+
+<span class="nc" id="L130">			$(window).on('resize', function()&quot;&quot;&quot;),format.raw/*98.37*/(&quot;&quot;&quot;{&quot;&quot;&quot;),format.raw/*98.38*/(&quot;&quot;&quot;</span>
+<span class="nc" id="L131">				&quot;&quot;&quot;),format.raw/*99.5*/(&quot;&quot;&quot;ps.update();</span>
+<span class="nc" id="L132">			&quot;&quot;&quot;),format.raw/*100.4*/(&quot;&quot;&quot;}&quot;&quot;&quot;),format.raw/*100.5*/(&quot;&quot;&quot;)</span>
+<span class="nc" id="L133">		&quot;&quot;&quot;),format.raw/*101.3*/(&quot;&quot;&quot;}&quot;&quot;&quot;),format.raw/*101.4*/(&quot;&quot;&quot;);</span>
+			
+		
+	&lt;/script&gt;
+&lt;!--===============================================================================================--&gt;
+<span class="nc" id="L138">	&lt;script src=&quot;&quot;&quot;&quot;),_display_(/*106.16*/routes/*106.22*/.Assets.versioned(&quot;javascripts/main.js&quot;)),format.raw/*106.62*/(&quot;&quot;&quot;&quot;&gt;&lt;/script&gt;</span>
+
+&lt;/body&gt;
+&lt;/html&gt;
+&lt;html&gt;&lt;body&gt;
+
+&lt;/body&gt;
+&lt;/html&gt;&quot;&quot;&quot;))
+      }
+    }
+  }
+
+<span class="nc" id="L150">  def render(print:Map[String, Long]): play.twirl.api.HtmlFormat.Appendable = apply(print)</span>
+
+<span class="nc" id="L152">  def f:((Map[String, Long]) =&gt; play.twirl.api.HtmlFormat.Appendable) = (print) =&gt; apply(print)</span>
+
+<span class="nc" id="L154">  def ref: this.type = this</span>
+
+}
+
+
+              /*
+                  -- GENERATED --
+                  DATE: Tue Jul 31 16:35:00 EDT 2018
+                  SOURCE: C:/Users/JASKARN SINGH/Desktop/TweetMiner1/app/views/WordLevelStatistics.scala.html
+                  HASH: bcc5d1e8693eff3249dcf0e5d91329fc3a62c2a8
+                  MATRIX: 973-&gt;1|1093-&gt;26|1121-&gt;28|1513-&gt;393|1528-&gt;399|1600-&gt;449|1782-&gt;604|1797-&gt;610|1872-&gt;663|2054-&gt;818|2069-&gt;824|2134-&gt;868|2316-&gt;1023|2331-&gt;1029|2401-&gt;1077|2583-&gt;1232|2598-&gt;1238|2674-&gt;1292|2856-&gt;1447|2871-&gt;1453|2933-&gt;1494|3011-&gt;1545|3026-&gt;1551|3088-&gt;1592|3939-&gt;2417|3974-&gt;2436|4013-&gt;2437|4049-&gt;2446|4219-&gt;2589|4243-&gt;2592|4315-&gt;2637|4337-&gt;2638|4441-&gt;2712|4474-&gt;2718|4684-&gt;2901|4699-&gt;2907|4772-&gt;2959|4931-&gt;3091|4946-&gt;3097|5009-&gt;3139|5064-&gt;3167|5079-&gt;3173|5149-&gt;3222|5415-&gt;3461|5430-&gt;3467|5508-&gt;3524|5594-&gt;3582|5623-&gt;3583|5655-&gt;3588|5759-&gt;3664|5788-&gt;3665|5821-&gt;3671|5866-&gt;3688|5895-&gt;3689|5928-&gt;3694|5957-&gt;3695|6129-&gt;3839|6145-&gt;3845|6207-&gt;3885
+                  LINES: 28-&gt;1|33-&gt;1|34-&gt;2|45-&gt;13|45-&gt;13|45-&gt;13|47-&gt;15|47-&gt;15|47-&gt;15|49-&gt;17|49-&gt;17|49-&gt;17|51-&gt;19|51-&gt;19|51-&gt;19|53-&gt;21|53-&gt;21|53-&gt;21|55-&gt;23|55-&gt;23|55-&gt;23|56-&gt;24|56-&gt;24|56-&gt;24|90-&gt;58|90-&gt;58|90-&gt;58|92-&gt;60|96-&gt;64|96-&gt;64|97-&gt;65|97-&gt;65|102-&gt;70|103-&gt;71|118-&gt;86|118-&gt;86|118-&gt;86|120-&gt;88|120-&gt;88|120-&gt;88|121-&gt;89|121-&gt;89|121-&gt;89|125-&gt;93|125-&gt;93|125-&gt;93|127-&gt;95|127-&gt;95|128-&gt;96|130-&gt;98|130-&gt;98|131-&gt;99|132-&gt;100|132-&gt;100|133-&gt;101|133-&gt;101|138-&gt;106|138-&gt;106|138-&gt;106
+                  -- GENERATED --
+              */
+          
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.7.9.201702052155</span></div></body></html>

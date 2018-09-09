@@ -4,7 +4,7 @@
 		module="tweetminer1-build"
 		revision="0.1.0-SNAPSHOT"
 		status="integration"
-		publication="20180728173239"
+		publication="20180731155611"
 		e:sbtVersion="1.0" e:scalaVersion="2.12"
 	>
 		<description>
@@ -43,5 +43,6 @@
 		<dependency org="com.typesafe.play" name="sbt-plugin" rev="2.6.17" conf="compile->default(compile)" e:sbtVersion="1.0" e:scalaVersion="2.12"/>
 		<dependency org="com.typesafe.sbt" name="sbt-play-enhancer" rev="1.2.2" conf="compile->default(compile)" e:sbtVersion="1.0" e:scalaVersion="2.12"/>
 		<dependency org="com.typesafe.sbteclipse" name="sbteclipse-plugin" rev="5.2.4" conf="compile->default(compile)" e:sbtVersion="1.0" e:scalaVersion="2.12"/>
+		<dependency org="com.github.sbt" name="sbt-jacoco" rev="3.1.0" conf="compile->default(compile)" e:sbtVersion="1.0" e:scalaVersion="2.12"/>
 	</dependencies>
 </ivy-module>

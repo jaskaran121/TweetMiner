@@ -305,6 +305,11 @@
       <attribute name="javadoc_location" value="jar:file:C:\Users\Hp\.ivy2\cache\com.h2database\h2\docs\h2-1.4.197-javadoc.jar!/"/>
     </attributes>
   </classpathentry>
+  <classpathentry sourcepath="C:\Users\Hp\.ivy2\cache\org.twitter4j\twitter4j-core\srcs\twitter4j-core-4.0.6-sources.jar" kind="lib" path="C:\Users\Hp\.ivy2\cache\org.twitter4j\twitter4j-core\jars\twitter4j-core-4.0.6.jar">
+    <attributes>
+      <attribute name="javadoc_location" value="jar:file:C:\Users\Hp\.ivy2\cache\org.twitter4j\twitter4j-core\docs\twitter4j-core-4.0.6-javadoc.jar!/"/>
+    </attributes>
+  </classpathentry>
   <classpathentry sourcepath="C:\Users\Hp\.ivy2\cache\com.typesafe.play\play-test_2.12\srcs\play-test_2.12-2.6.17-sources.jar" kind="lib" path="C:\Users\Hp\.ivy2\cache\com.typesafe.play\play-test_2.12\jars\play-test_2.12-2.6.17.jar">
     <attributes>
       <attribute name="javadoc_location" value="jar:file:C:\Users\Hp\.ivy2\cache\com.typesafe.play\play-test_2.12\docs\play-test_2.12-2.6.17-javadoc.jar!/"/>

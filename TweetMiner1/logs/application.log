@@ -1,55 +1,10 @@
-2018-07-28 17:35:18,722 [ERROR] from application in play-dev-mode-akka.actor.default-dispatcher-3 - 
+2018-07-31 21:53:45,596 [INFO] from application in play-dev-mode-akka.actor.default-dispatcher-3 - ApplicationTimer demo: Starting application at 2018-08-01T01:53:45.592Z
+2018-07-31 21:53:47,281 [WARN] from org.hibernate.validator.messageinterpolation.ParameterMessageInterpolator in play-dev-mode-akka.actor.default-dispatcher-3 - HV000184: ParameterMessageInterpolator has been chosen, EL interpolation will not be supported
+2018-07-31 21:53:47,762 [INFO] from play.api.http.EnabledFilters in play-dev-mode-akka.actor.default-dispatcher-3 - Enabled Filters (see <https://www.playframework.com/documentation/latest/Filters>):
 
-! @78lnk82nf - Internal server error, for (GET) [/] ->
- 
-play.api.UnexpectedException: Unexpected exception[NoClassDefFoundError: services/ApplicationTimer]
-	at play.core.server.DevServerStart$$anon$1.reload(DevServerStart.scala:190)
-	at play.core.server.DevServerStart$$anon$1.get(DevServerStart.scala:124)
-	at play.core.server.AkkaHttpServer.handleRequest(AkkaHttpServer.scala:222)
-	at play.core.server.AkkaHttpServer.$anonfun$createServerBinding$1(AkkaHttpServer.scala:137)
-	at akka.stream.impl.fusing.MapAsync$$anon$25.onPush(Ops.scala:1194)
-	at akka.stream.impl.fusing.GraphInterpreter.processPush(GraphInterpreter.scala:519)
-	at akka.stream.impl.fusing.GraphInterpreter.processEvent(GraphInterpreter.scala:482)
-	at akka.stream.impl.fusing.GraphInterpreter.execute(GraphInterpreter.scala:378)
-	at akka.stream.impl.fusing.GraphInterpreterShell.runBatch(ActorGraphInterpreter.scala:585)
-	at akka.stream.impl.fusing.GraphInterpreterShell$AsyncInput.execute(ActorGraphInterpreter.scala:469)
-	at akka.stream.impl.fusing.GraphInterpreterShell.processEvent(ActorGraphInterpreter.scala:560)
-	at akka.stream.impl.fusing.ActorGraphInterpreter.akka$stream$impl$fusing$ActorGraphInterpreter$$processEvent(ActorGraphInterpreter.scala:742)
-	at akka.stream.impl.fusing.ActorGraphInterpreter$$anonfun$receive$1.applyOrElse(ActorGraphInterpreter.scala:757)
-	at akka.actor.Actor.aroundReceive(Actor.scala:517)
-	at akka.actor.Actor.aroundReceive$(Actor.scala:515)
-	at akka.stream.impl.fusing.ActorGraphInterpreter.aroundReceive(ActorGraphInterpreter.scala:667)
-	at akka.actor.ActorCell.receiveMessage(ActorCell.scala:590)
-	at akka.actor.ActorCell.invoke(ActorCell.scala:559)
-	at akka.dispatch.Mailbox.processMailbox(Mailbox.scala:257)
-	at akka.dispatch.Mailbox.run(Mailbox.scala:224)
-	at akka.dispatch.Mailbox.exec(Mailbox.scala:234)
-	at akka.dispatch.forkjoin.ForkJoinTask.doExec(ForkJoinTask.java:260)
-	at akka.dispatch.forkjoin.ForkJoinPool$WorkQueue.runTask(ForkJoinPool.java:1339)
-	at akka.dispatch.forkjoin.ForkJoinPool.runWorker(ForkJoinPool.java:1979)
-	at akka.dispatch.forkjoin.ForkJoinWorkerThread.run(ForkJoinWorkerThread.java:107)
-Caused by: java.lang.NoClassDefFoundError: services/ApplicationTimer
-	at Module.configure(Module.java:26)
-	at com.google.inject.AbstractModule.configure(AbstractModule.java:62)
-	at com.google.inject.spi.Elements$RecordingBinder.install(Elements.java:340)
-	at com.google.inject.spi.Elements.getElements(Elements.java:110)
-	at com.google.inject.util.Modules$OverrideModule.configure(Modules.java:177)
-	at com.google.inject.AbstractModule.configure(AbstractModule.java:62)
-	at com.google.inject.spi.Elements$RecordingBinder.install(Elements.java:340)
-	at com.google.inject.spi.Elements.getElements(Elements.java:110)
-	at com.google.inject.internal.InjectorShell$Builder.build(InjectorShell.java:138)
-	at com.google.inject.internal.InternalInjectorCreator.build(InternalInjectorCreator.java:104)
-	at com.google.inject.Guice.createInjector(Guice.java:99)
-	at com.google.inject.Guice.createInjector(Guice.java:84)
-	at play.api.inject.guice.GuiceBuilder.injector(GuiceInjectorBuilder.scala:185)
-	at play.api.inject.guice.GuiceApplicationBuilder.build(GuiceApplicationBuilder.scala:137)
-	at play.api.inject.guice.GuiceApplicationLoader.load(GuiceApplicationLoader.scala:21)
-	at play.core.server.DevServerStart$$anon$1.$anonfun$reload$3(DevServerStart.scala:174)
-	at play.utils.Threads$.withContextClassLoader(Threads.scala:21)
-	at play.core.server.DevServerStart$$anon$1.reload(DevServerStart.scala:171)
-	... 24 common frames omitted
-Caused by: java.lang.ClassNotFoundException: services.ApplicationTimer
-	at java.net.URLClassLoader.findClass(URLClassLoader.java:381)
-	at java.lang.ClassLoader.loadClass(ClassLoader.java:424)
-	at java.lang.ClassLoader.loadClass(ClassLoader.java:357)
-	... 42 common frames omitted
+    play.filters.csrf.CSRFFilter
+    play.filters.headers.SecurityHeadersFilter
+    play.filters.hosts.AllowedHostsFilter
+    filters.ExampleFilter
+
+2018-07-31 21:53:47,815 [INFO] from play.api.Play in play-dev-mode-akka.actor.default-dispatcher-3 - Application started (Dev)

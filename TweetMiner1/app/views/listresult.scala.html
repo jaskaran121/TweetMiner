@@ -1,9 +1,13 @@
-@(searchform : Form[SearchKeyword],keywords:Set[SearchKeyword])
+@(searchform : Form[SearchKeyword],tweets:LinkedHashMap[String,List[TweetModel]])
+<!-- Author Prabhleen -->
+
+
+
 @import helper._
 
     <html>
         <head>
-            <title>Create Book</title>
+            <title>Search Word</title>
         </head>
 
         <body>
@@ -12,10 +16,23 @@
                 <input type="submit" value="create">
             }
 
-            <h1>ALL books</h1>
-            @if(keywords!=null){
-            @for(keywrd<-keywords){
-                <p>@keywrd.getKeyword()</p>
-            }}
+            <h1>ALL Tweets</h1>
+            @if(tweets!=null){
+             @for((str,t)<-tweets){
+            <div style="Float:left;"><h2>Total @t.length tweets fetched for Keyword  <a href="@routes.TweetMinerController.appendString(str)">@str</a> </h2></div>
+            @for(tweet<-t){
+            <div style="background-color:lightblue">
+                <b>Author:-</b><a href="@routes.TweetMinerController.getUserData(tweet.getAuthor().getScreenName())">@tweet.getAuthor().getScreenName()</a>
+                <p><b>Tweet:-</b>@tweet.getTweet()</p>
+                <p><b>Location:-</b><a href="@routes.TweetMinerController.getLatLongPositions(tweet.getLocation())">@tweet.getLocation()</a></p>
+                 <p><b>HashTags:-</b>@for(hashtag<-tweet.getHashtags()){
+                 
+                 <a href="@routes.TweetMinerController.searchHashTag(hashtag.getText())">#@hashtag.getText()</a> 
+                 
+                 }
+                 </p>
+                 <p>------------------------------------------------------------------------------------------------------------------------------------------------</P>
+                </div> 
+            }}}
         </body>
     </html>

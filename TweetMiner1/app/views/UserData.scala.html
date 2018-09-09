@@ -1,0 +1,46 @@
+@(user:twitter4j.User,recentPost:List[twitter4j.Status])
+<!-- Author Gagan -->
+
+    <html>
+        <head>
+            <title>User</title>
+          
+        </head>
+
+        <body>
+        
+        
+        <h2>User Profile</h2>
+		<p><b>Banner Image Url:-</b>@user.getProfileBannerURL()</p>
+		<p><b>Profile Image Url:-</b>@user.getBiggerProfileImageURLHttps()</p>
+		<p><b>Following:-</b>@user.getFriendsCount</p>
+		<p><b>Followers:-</b>@user.getFollowersCount</p>
+		<p><b>Likes:-</b>@user.getFavouritesCount</p>
+		<p><b>No of Tweets:-</b>@user.getStatusesCount</p>
+		<a target="_blank" href="https://twitter.com/@user.getScreenName" >@user.getName</a>
+	
+		<div >
+	<h2>Recent Posts:</h2>
+	@if(!recentPost.isEmpty){
+		@for(status <- recentPost){
+			<div>
+				<div >
+					<strong>@status.getUser().getName()</strong>
+								<br/>&#64<i>@status.getUser().getScreenName()</i>
+							</div>
+							<div >	
+								<p> @status.getText</p>
+								
+								<p>
+									<span >@if(status.getRetweetedStatus!=null){@status.getRetweetedStatus.getRetweetCount} else { 0 }</span>
+									<span >@if(status.getRetweetedStatus!=null){@status.getRetweetedStatus.getFavoriteCount} else { 0 }</span>
+								</p>
+							</div>
+						</div>
+					</div>
+				</div>
+		}
+	}
+	</div>
+
+        </body>

@@ -1,0 +1,253 @@
+<?xml version="1.0" encoding="utf-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>Routes.scala</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=2;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">Jacoco Coverage Report</a> &gt; <a href="index.source.html" class="el_package">router</a> &gt; <span class="el_source">Routes.scala</span></div><h1>Routes.scala</h1><pre class="source lang-java linenums">// @GENERATOR:play-routes-compiler
+// @SOURCE:C:/Users/JASKARN SINGH/Desktop/TweetMiner1/conf/routes
+// @DATE:Tue Jul 31 21:28:17 EDT 2018
+
+package router
+
+import play.core.routing._
+import play.core.routing.HandlerInvokerFactory._
+
+import play.api.mvc._
+
+import _root_.controllers.Assets.Asset
+import _root_.play.libs.F
+
+<span class="nc" id="L15">class Routes(</span>
+<span class="nc" id="L16">  override val errorHandler: play.api.http.HttpErrorHandler, </span>
+  // @LINE:6
+<span class="nc" id="L18">  TweetMinerController_0: controllers.TweetMinerController,</span>
+  // @LINE:14
+<span class="nc" id="L20">  Assets_1: controllers.Assets,</span>
+<span class="nc" id="L21">  val prefix: String</span>
+<span class="nc" id="L22">) extends GeneratedRouter {</span>
+
+   @javax.inject.Inject()
+   def this(errorHandler: play.api.http.HttpErrorHandler,
+    // @LINE:6
+    TweetMinerController_0: controllers.TweetMinerController,
+    // @LINE:14
+    Assets_1: controllers.Assets
+<span class="nc" id="L30">  ) = this(errorHandler, TweetMinerController_0, Assets_1, &quot;/&quot;)</span>
+
+  def withPrefix(prefix: String): Routes = {
+<span class="nc" id="L33">    router.RoutesPrefix.setPrefix(prefix)</span>
+<span class="nc" id="L34">    new Routes(errorHandler, TweetMinerController_0, Assets_1, prefix)</span>
+  }
+
+<span class="nc" id="L37">  private[this] val defaultPrefix: String = {</span>
+<span class="nc bnc" id="L38" title="All 2 branches missed.">    if (this.prefix.endsWith(&quot;/&quot;)) &quot;&quot; else &quot;/&quot;</span>
+  }
+
+<span class="nc" id="L41">  def documentation = List(</span>
+<span class="nc" id="L42">    (&quot;&quot;&quot;GET&quot;&quot;&quot;, this.prefix, &quot;&quot;&quot;controllers.TweetMinerController.index&quot;&quot;&quot;),</span>
+<span class="nc" id="L43">    (&quot;&quot;&quot;POST&quot;&quot;&quot;, this.prefix, &quot;&quot;&quot;controllers.TweetMinerController.search&quot;&quot;&quot;),</span>
+<span class="nc bnc" id="L44" title="All 2 branches missed.">    (&quot;&quot;&quot;GET&quot;&quot;&quot;, this.prefix + (if(this.prefix.endsWith(&quot;/&quot;)) &quot;&quot; else &quot;/&quot;) + &quot;&quot;&quot;tweets&quot;&quot;&quot;, &quot;&quot;&quot;controllers.TweetMinerController.tweetrouter&quot;&quot;&quot;),</span>
+<span class="nc bnc" id="L45" title="All 2 branches missed.">    (&quot;&quot;&quot;GET&quot;&quot;&quot;, this.prefix + (if(this.prefix.endsWith(&quot;/&quot;)) &quot;&quot; else &quot;/&quot;) + &quot;&quot;&quot;Location&quot;&quot;&quot;, &quot;&quot;&quot;controllers.TweetMinerController.getLatLongPositions(address:String)&quot;&quot;&quot;),</span>
+<span class="nc bnc" id="L46" title="All 2 branches missed.">    (&quot;&quot;&quot;GET&quot;&quot;&quot;, this.prefix + (if(this.prefix.endsWith(&quot;/&quot;)) &quot;&quot; else &quot;/&quot;) + &quot;&quot;&quot;userdata&quot;&quot;&quot;, &quot;&quot;&quot;controllers.TweetMinerController.getUserData(screenName:String)&quot;&quot;&quot;),</span>
+<span class="nc bnc" id="L47" title="All 2 branches missed.">    (&quot;&quot;&quot;GET&quot;&quot;&quot;, this.prefix + (if(this.prefix.endsWith(&quot;/&quot;)) &quot;&quot; else &quot;/&quot;) + &quot;&quot;&quot;index1&quot;&quot;&quot;, &quot;&quot;&quot;controllers.TweetMinerController.appendString(searchKeyword:String)&quot;&quot;&quot;),</span>
+<span class="nc bnc" id="L48" title="All 2 branches missed.">    (&quot;&quot;&quot;GET&quot;&quot;&quot;, this.prefix + (if(this.prefix.endsWith(&quot;/&quot;)) &quot;&quot; else &quot;/&quot;) + &quot;&quot;&quot;HashTaglistresult&quot;&quot;&quot;, &quot;&quot;&quot;controllers.TweetMinerController.searchHashTag(searchKeyword:String)&quot;&quot;&quot;),</span>
+<span class="nc bnc" id="L49" title="All 2 branches missed.">    (&quot;&quot;&quot;GET&quot;&quot;&quot;, this.prefix + (if(this.prefix.endsWith(&quot;/&quot;)) &quot;&quot; else &quot;/&quot;) + &quot;&quot;&quot;assets/&quot;&quot;&quot; + &quot;$&quot; + &quot;&quot;&quot;file&lt;.+&gt;&quot;&quot;&quot;, &quot;&quot;&quot;controllers.Assets.versioned(path:String = &quot;/public&quot;, file:Asset)&quot;&quot;&quot;),</span>
+<span class="nc" id="L50">    Nil</span>
+<span class="nc" id="L51">  ).foldLeft(List.empty[(String,String,String)]) { (s,e) =&gt; e.asInstanceOf[Any] match {</span>
+    case r @ (_,_,_) =&gt; s :+ r.asInstanceOf[(String,String,String)]
+    case l =&gt; s ++ l.asInstanceOf[List[(String,String,String)]]
+  }}
+
+
+  // @LINE:6
+<span class="nc bnc" id="L58" title="All 2 branches missed.">  private[this] lazy val controllers_TweetMinerController_index0_route = Route(&quot;GET&quot;,</span>
+<span class="nc" id="L59">    PathPattern(List(StaticPart(this.prefix)))</span>
+  )
+<span class="nc bnc" id="L61" title="All 2 branches missed.">  private[this] lazy val controllers_TweetMinerController_index0_invoker = createInvoker(</span>
+<span class="nc" id="L62">    TweetMinerController_0.index,</span>
+<span class="nc" id="L63">    play.api.routing.HandlerDef(this.getClass.getClassLoader,</span>
+<span class="nc" id="L64">      &quot;router&quot;,</span>
+<span class="nc" id="L65">      &quot;controllers.TweetMinerController&quot;,</span>
+<span class="nc" id="L66">      &quot;index&quot;,</span>
+<span class="nc" id="L67">      Nil,</span>
+<span class="nc" id="L68">      &quot;GET&quot;,</span>
+<span class="nc" id="L69">      this.prefix + &quot;&quot;&quot;&quot;&quot;&quot;,</span>
+<span class="nc" id="L70">      &quot;&quot;&quot; An example controller showing a sample home page&quot;&quot;&quot;,</span>
+<span class="nc" id="L71">      Seq()</span>
+    )
+  )
+
+  // @LINE:7
+<span class="nc bnc" id="L76" title="All 2 branches missed.">  private[this] lazy val controllers_TweetMinerController_search1_route = Route(&quot;POST&quot;,</span>
+<span class="nc" id="L77">    PathPattern(List(StaticPart(this.prefix)))</span>
+  )
+<span class="nc bnc" id="L79" title="All 2 branches missed.">  private[this] lazy val controllers_TweetMinerController_search1_invoker = createInvoker(</span>
+<span class="nc" id="L80">    TweetMinerController_0.search,</span>
+<span class="nc" id="L81">    play.api.routing.HandlerDef(this.getClass.getClassLoader,</span>
+<span class="nc" id="L82">      &quot;router&quot;,</span>
+<span class="nc" id="L83">      &quot;controllers.TweetMinerController&quot;,</span>
+<span class="nc" id="L84">      &quot;search&quot;,</span>
+<span class="nc" id="L85">      Nil,</span>
+<span class="nc" id="L86">      &quot;POST&quot;,</span>
+<span class="nc" id="L87">      this.prefix + &quot;&quot;&quot;&quot;&quot;&quot;,</span>
+<span class="nc" id="L88">      &quot;&quot;&quot;&quot;&quot;&quot;,</span>
+<span class="nc" id="L89">      Seq()</span>
+    )
+  )
+
+  // @LINE:8
+<span class="nc bnc" id="L94" title="All 2 branches missed.">  private[this] lazy val controllers_TweetMinerController_tweetrouter2_route = Route(&quot;GET&quot;,</span>
+<span class="nc" id="L95">    PathPattern(List(StaticPart(this.prefix), StaticPart(this.defaultPrefix), StaticPart(&quot;tweets&quot;)))</span>
+  )
+<span class="nc bnc" id="L97" title="All 2 branches missed.">  private[this] lazy val controllers_TweetMinerController_tweetrouter2_invoker = createInvoker(</span>
+<span class="nc" id="L98">    TweetMinerController_0.tweetrouter,</span>
+<span class="nc" id="L99">    play.api.routing.HandlerDef(this.getClass.getClassLoader,</span>
+<span class="nc" id="L100">      &quot;router&quot;,</span>
+<span class="nc" id="L101">      &quot;controllers.TweetMinerController&quot;,</span>
+<span class="nc" id="L102">      &quot;tweetrouter&quot;,</span>
+<span class="nc" id="L103">      Nil,</span>
+<span class="nc" id="L104">      &quot;GET&quot;,</span>
+<span class="nc" id="L105">      this.prefix + &quot;&quot;&quot;tweets&quot;&quot;&quot;,</span>
+<span class="nc" id="L106">      &quot;&quot;&quot;&quot;&quot;&quot;,</span>
+<span class="nc" id="L107">      Seq()</span>
+    )
+  )
+
+  // @LINE:9
+<span class="nc bnc" id="L112" title="All 2 branches missed.">  private[this] lazy val controllers_TweetMinerController_getLatLongPositions3_route = Route(&quot;GET&quot;,</span>
+<span class="nc" id="L113">    PathPattern(List(StaticPart(this.prefix), StaticPart(this.defaultPrefix), StaticPart(&quot;Location&quot;)))</span>
+  )
+<span class="nc bnc" id="L115" title="All 2 branches missed.">  private[this] lazy val controllers_TweetMinerController_getLatLongPositions3_invoker = createInvoker(</span>
+<span class="nc" id="L116">    TweetMinerController_0.getLatLongPositions(fakeValue[String]),</span>
+<span class="nc" id="L117">    play.api.routing.HandlerDef(this.getClass.getClassLoader,</span>
+<span class="nc" id="L118">      &quot;router&quot;,</span>
+<span class="nc" id="L119">      &quot;controllers.TweetMinerController&quot;,</span>
+<span class="nc" id="L120">      &quot;getLatLongPositions&quot;,</span>
+<span class="nc" id="L121">      Seq(classOf[String]),</span>
+<span class="nc" id="L122">      &quot;GET&quot;,</span>
+<span class="nc" id="L123">      this.prefix + &quot;&quot;&quot;Location&quot;&quot;&quot;,</span>
+<span class="nc" id="L124">      &quot;&quot;&quot;&quot;&quot;&quot;,</span>
+<span class="nc" id="L125">      Seq()</span>
+    )
+  )
+
+  // @LINE:10
+<span class="nc bnc" id="L130" title="All 2 branches missed.">  private[this] lazy val controllers_TweetMinerController_getUserData4_route = Route(&quot;GET&quot;,</span>
+<span class="nc" id="L131">    PathPattern(List(StaticPart(this.prefix), StaticPart(this.defaultPrefix), StaticPart(&quot;userdata&quot;)))</span>
+  )
+<span class="nc bnc" id="L133" title="All 2 branches missed.">  private[this] lazy val controllers_TweetMinerController_getUserData4_invoker = createInvoker(</span>
+<span class="nc" id="L134">    TweetMinerController_0.getUserData(fakeValue[String]),</span>
+<span class="nc" id="L135">    play.api.routing.HandlerDef(this.getClass.getClassLoader,</span>
+<span class="nc" id="L136">      &quot;router&quot;,</span>
+<span class="nc" id="L137">      &quot;controllers.TweetMinerController&quot;,</span>
+<span class="nc" id="L138">      &quot;getUserData&quot;,</span>
+<span class="nc" id="L139">      Seq(classOf[String]),</span>
+<span class="nc" id="L140">      &quot;GET&quot;,</span>
+<span class="nc" id="L141">      this.prefix + &quot;&quot;&quot;userdata&quot;&quot;&quot;,</span>
+<span class="nc" id="L142">      &quot;&quot;&quot;&quot;&quot;&quot;,</span>
+<span class="nc" id="L143">      Seq()</span>
+    )
+  )
+
+  // @LINE:11
+<span class="nc bnc" id="L148" title="All 2 branches missed.">  private[this] lazy val controllers_TweetMinerController_appendString5_route = Route(&quot;GET&quot;,</span>
+<span class="nc" id="L149">    PathPattern(List(StaticPart(this.prefix), StaticPart(this.defaultPrefix), StaticPart(&quot;index1&quot;)))</span>
+  )
+<span class="nc bnc" id="L151" title="All 2 branches missed.">  private[this] lazy val controllers_TweetMinerController_appendString5_invoker = createInvoker(</span>
+<span class="nc" id="L152">    TweetMinerController_0.appendString(fakeValue[String]),</span>
+<span class="nc" id="L153">    play.api.routing.HandlerDef(this.getClass.getClassLoader,</span>
+<span class="nc" id="L154">      &quot;router&quot;,</span>
+<span class="nc" id="L155">      &quot;controllers.TweetMinerController&quot;,</span>
+<span class="nc" id="L156">      &quot;appendString&quot;,</span>
+<span class="nc" id="L157">      Seq(classOf[String]),</span>
+<span class="nc" id="L158">      &quot;GET&quot;,</span>
+<span class="nc" id="L159">      this.prefix + &quot;&quot;&quot;index1&quot;&quot;&quot;,</span>
+<span class="nc" id="L160">      &quot;&quot;&quot;&quot;&quot;&quot;,</span>
+<span class="nc" id="L161">      Seq()</span>
+    )
+  )
+
+  // @LINE:12
+<span class="nc bnc" id="L166" title="All 2 branches missed.">  private[this] lazy val controllers_TweetMinerController_searchHashTag6_route = Route(&quot;GET&quot;,</span>
+<span class="nc" id="L167">    PathPattern(List(StaticPart(this.prefix), StaticPart(this.defaultPrefix), StaticPart(&quot;HashTaglistresult&quot;)))</span>
+  )
+<span class="nc bnc" id="L169" title="All 2 branches missed.">  private[this] lazy val controllers_TweetMinerController_searchHashTag6_invoker = createInvoker(</span>
+<span class="nc" id="L170">    TweetMinerController_0.searchHashTag(fakeValue[String]),</span>
+<span class="nc" id="L171">    play.api.routing.HandlerDef(this.getClass.getClassLoader,</span>
+<span class="nc" id="L172">      &quot;router&quot;,</span>
+<span class="nc" id="L173">      &quot;controllers.TweetMinerController&quot;,</span>
+<span class="nc" id="L174">      &quot;searchHashTag&quot;,</span>
+<span class="nc" id="L175">      Seq(classOf[String]),</span>
+<span class="nc" id="L176">      &quot;GET&quot;,</span>
+<span class="nc" id="L177">      this.prefix + &quot;&quot;&quot;HashTaglistresult&quot;&quot;&quot;,</span>
+<span class="nc" id="L178">      &quot;&quot;&quot;&quot;&quot;&quot;,</span>
+<span class="nc" id="L179">      Seq()</span>
+    )
+  )
+
+  // @LINE:14
+<span class="nc bnc" id="L184" title="All 2 branches missed.">  private[this] lazy val controllers_Assets_versioned7_route = Route(&quot;GET&quot;,</span>
+<span class="nc" id="L185">    PathPattern(List(StaticPart(this.prefix), StaticPart(this.defaultPrefix), StaticPart(&quot;assets/&quot;), DynamicPart(&quot;file&quot;, &quot;&quot;&quot;.+&quot;&quot;&quot;,false)))</span>
+  )
+<span class="nc bnc" id="L187" title="All 2 branches missed.">  private[this] lazy val controllers_Assets_versioned7_invoker = createInvoker(</span>
+<span class="nc" id="L188">    Assets_1.versioned(fakeValue[String], fakeValue[Asset]),</span>
+<span class="nc" id="L189">    play.api.routing.HandlerDef(this.getClass.getClassLoader,</span>
+<span class="nc" id="L190">      &quot;router&quot;,</span>
+<span class="nc" id="L191">      &quot;controllers.Assets&quot;,</span>
+<span class="nc" id="L192">      &quot;versioned&quot;,</span>
+<span class="nc" id="L193">      Seq(classOf[String], classOf[Asset]),</span>
+<span class="nc" id="L194">      &quot;GET&quot;,</span>
+<span class="nc" id="L195">      this.prefix + &quot;&quot;&quot;assets/&quot;&quot;&quot; + &quot;$&quot; + &quot;&quot;&quot;file&lt;.+&gt;&quot;&quot;&quot;,</span>
+<span class="nc" id="L196">      &quot;&quot;&quot; Map static resources from the /public folder to the /assets URL path&quot;&quot;&quot;,</span>
+<span class="nc" id="L197">      Seq()</span>
+    )
+  )
+
+
+<span class="nc bnc" id="L202" title="All 2 branches missed.">  def routes: PartialFunction[RequestHeader, Handler] = {</span>
+  
+    // @LINE:6
+<span class="nc bnc" id="L205" title="All 4 branches missed.">    case controllers_TweetMinerController_index0_route(params@_) =&gt;</span>
+<span class="nc" id="L206">      call { </span>
+<span class="nc" id="L207">        controllers_TweetMinerController_index0_invoker.call(TweetMinerController_0.index)</span>
+      }
+  
+    // @LINE:7
+<span class="nc bnc" id="L211" title="All 4 branches missed.">    case controllers_TweetMinerController_search1_route(params@_) =&gt;</span>
+<span class="nc" id="L212">      call { </span>
+<span class="nc" id="L213">        controllers_TweetMinerController_search1_invoker.call(TweetMinerController_0.search)</span>
+      }
+  
+    // @LINE:8
+<span class="nc bnc" id="L217" title="All 4 branches missed.">    case controllers_TweetMinerController_tweetrouter2_route(params@_) =&gt;</span>
+<span class="nc" id="L218">      call { </span>
+<span class="nc" id="L219">        controllers_TweetMinerController_tweetrouter2_invoker.call(TweetMinerController_0.tweetrouter)</span>
+      }
+  
+    // @LINE:9
+<span class="nc bnc" id="L223" title="All 4 branches missed.">    case controllers_TweetMinerController_getLatLongPositions3_route(params@_) =&gt;</span>
+<span class="nc" id="L224">      call(params.fromQuery[String](&quot;address&quot;, None)) { (address) =&gt;</span>
+        controllers_TweetMinerController_getLatLongPositions3_invoker.call(TweetMinerController_0.getLatLongPositions(address))
+      }
+  
+    // @LINE:10
+<span class="nc bnc" id="L229" title="All 4 branches missed.">    case controllers_TweetMinerController_getUserData4_route(params@_) =&gt;</span>
+<span class="nc" id="L230">      call(params.fromQuery[String](&quot;screenName&quot;, None)) { (screenName) =&gt;</span>
+        controllers_TweetMinerController_getUserData4_invoker.call(TweetMinerController_0.getUserData(screenName))
+      }
+  
+    // @LINE:11
+<span class="nc bnc" id="L235" title="All 4 branches missed.">    case controllers_TweetMinerController_appendString5_route(params@_) =&gt;</span>
+<span class="nc" id="L236">      call(params.fromQuery[String](&quot;searchKeyword&quot;, None)) { (searchKeyword) =&gt;</span>
+        controllers_TweetMinerController_appendString5_invoker.call(TweetMinerController_0.appendString(searchKeyword))
+      }
+  
+    // @LINE:12
+<span class="nc bnc" id="L241" title="All 4 branches missed.">    case controllers_TweetMinerController_searchHashTag6_route(params@_) =&gt;</span>
+<span class="nc" id="L242">      call(params.fromQuery[String](&quot;searchKeyword&quot;, None)) { (searchKeyword) =&gt;</span>
+        controllers_TweetMinerController_searchHashTag6_invoker.call(TweetMinerController_0.searchHashTag(searchKeyword))
+      }
+  
+    // @LINE:14
+<span class="nc bnc" id="L247" title="All 4 branches missed.">    case controllers_Assets_versioned7_route(params@_) =&gt;</span>
+<span class="nc" id="L248">      call(Param[String](&quot;path&quot;, Right(&quot;/public&quot;)), params.fromPath[Asset](&quot;file&quot;, None)) { (path, file) =&gt;</span>
+        controllers_Assets_versioned7_invoker.call(Assets_1.versioned(path, file))
+      }
+  }
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.7.9.201702052155</span></div></body></html>

@@ -1,0 +1,116 @@
+<?xml version="1.0" encoding="utf-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>JavaScriptReverseRoutes.scala</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=2;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">Jacoco Coverage Report</a> &gt; <a href="index.source.html" class="el_package">controllers.javascript</a> &gt; <span class="el_source">JavaScriptReverseRoutes.scala</span></div><h1>JavaScriptReverseRoutes.scala</h1><pre class="source lang-java linenums">// @GENERATOR:play-routes-compiler
+// @SOURCE:C:/Users/JASKARN SINGH/Desktop/TweetMiner1/conf/routes
+// @DATE:Tue Jul 31 21:28:17 EDT 2018
+
+import play.api.routing.JavaScriptReverseRoute
+
+
+import _root_.controllers.Assets.Asset
+import _root_.play.libs.F
+
+// @LINE:6
+package controllers.javascript {
+
+  // @LINE:14
+<span class="nc" id="L15">  class ReverseAssets(_prefix: =&gt; String) {</span>
+
+    def _defaultPrefix: String = {
+<span class="nc bnc" id="L18" title="All 4 branches missed.">      if (_prefix.endsWith(&quot;/&quot;)) &quot;&quot; else &quot;/&quot;</span>
+    }
+
+  
+    // @LINE:14
+<span class="nc" id="L23">    def versioned: JavaScriptReverseRoute = JavaScriptReverseRoute(</span>
+<span class="nc" id="L24">      &quot;controllers.Assets.versioned&quot;,</span>
+<span class="nc" id="L25">      &quot;&quot;&quot;</span>
+        function(file1) {
+<span class="nc" id="L27">          return _wA({method:&quot;GET&quot;, url:&quot;&quot;&quot;&quot; + _prefix + { _defaultPrefix } + &quot;&quot;&quot;&quot; + &quot;assets/&quot; + (&quot;&quot;&quot; + implicitly[play.api.mvc.PathBindable[Asset]].javascriptUnbind + &quot;&quot;&quot;)(&quot;file&quot;, file1)})</span>
+        }
+      &quot;&quot;&quot;
+    )
+  
+  }
+
+  // @LINE:6
+<span class="nc" id="L35">  class ReverseTweetMinerController(_prefix: =&gt; String) {</span>
+
+    def _defaultPrefix: String = {
+<span class="nc bnc" id="L38" title="All 4 branches missed.">      if (_prefix.endsWith(&quot;/&quot;)) &quot;&quot; else &quot;/&quot;</span>
+    }
+
+  
+    // @LINE:9
+<span class="nc" id="L43">    def getLatLongPositions: JavaScriptReverseRoute = JavaScriptReverseRoute(</span>
+<span class="nc" id="L44">      &quot;controllers.TweetMinerController.getLatLongPositions&quot;,</span>
+<span class="nc" id="L45">      &quot;&quot;&quot;</span>
+        function(address0) {
+<span class="nc" id="L47">          return _wA({method:&quot;GET&quot;, url:&quot;&quot;&quot;&quot; + _prefix + { _defaultPrefix } + &quot;&quot;&quot;&quot; + &quot;Location&quot; + _qS([(&quot;&quot;&quot; + implicitly[play.api.mvc.QueryStringBindable[String]].javascriptUnbind + &quot;&quot;&quot;)(&quot;address&quot;, address0)])})</span>
+        }
+      &quot;&quot;&quot;
+    )
+  
+    // @LINE:12
+<span class="nc" id="L53">    def searchHashTag: JavaScriptReverseRoute = JavaScriptReverseRoute(</span>
+<span class="nc" id="L54">      &quot;controllers.TweetMinerController.searchHashTag&quot;,</span>
+<span class="nc" id="L55">      &quot;&quot;&quot;</span>
+        function(searchKeyword0) {
+<span class="nc" id="L57">          return _wA({method:&quot;GET&quot;, url:&quot;&quot;&quot;&quot; + _prefix + { _defaultPrefix } + &quot;&quot;&quot;&quot; + &quot;HashTaglistresult&quot; + _qS([(&quot;&quot;&quot; + implicitly[play.api.mvc.QueryStringBindable[String]].javascriptUnbind + &quot;&quot;&quot;)(&quot;searchKeyword&quot;, searchKeyword0)])})</span>
+        }
+      &quot;&quot;&quot;
+    )
+  
+    // @LINE:10
+<span class="nc" id="L63">    def getUserData: JavaScriptReverseRoute = JavaScriptReverseRoute(</span>
+<span class="nc" id="L64">      &quot;controllers.TweetMinerController.getUserData&quot;,</span>
+<span class="nc" id="L65">      &quot;&quot;&quot;</span>
+        function(screenName0) {
+<span class="nc" id="L67">          return _wA({method:&quot;GET&quot;, url:&quot;&quot;&quot;&quot; + _prefix + { _defaultPrefix } + &quot;&quot;&quot;&quot; + &quot;userdata&quot; + _qS([(&quot;&quot;&quot; + implicitly[play.api.mvc.QueryStringBindable[String]].javascriptUnbind + &quot;&quot;&quot;)(&quot;screenName&quot;, screenName0)])})</span>
+        }
+      &quot;&quot;&quot;
+    )
+  
+    // @LINE:11
+<span class="nc" id="L73">    def appendString: JavaScriptReverseRoute = JavaScriptReverseRoute(</span>
+<span class="nc" id="L74">      &quot;controllers.TweetMinerController.appendString&quot;,</span>
+<span class="nc" id="L75">      &quot;&quot;&quot;</span>
+        function(searchKeyword0) {
+<span class="nc" id="L77">          return _wA({method:&quot;GET&quot;, url:&quot;&quot;&quot;&quot; + _prefix + { _defaultPrefix } + &quot;&quot;&quot;&quot; + &quot;index1&quot; + _qS([(&quot;&quot;&quot; + implicitly[play.api.mvc.QueryStringBindable[String]].javascriptUnbind + &quot;&quot;&quot;)(&quot;searchKeyword&quot;, searchKeyword0)])})</span>
+<span class="nc bnc" id="L78" title="All 2 branches missed.">        }</span>
+      &quot;&quot;&quot;
+    )
+  
+    // @LINE:7
+<span class="nc" id="L83">    def search: JavaScriptReverseRoute = JavaScriptReverseRoute(</span>
+<span class="nc" id="L84">      &quot;controllers.TweetMinerController.search&quot;,</span>
+<span class="nc" id="L85">      &quot;&quot;&quot;</span>
+        function() {
+<span class="nc" id="L87">          return _wA({method:&quot;POST&quot;, url:&quot;&quot;&quot;&quot; + _prefix + &quot;&quot;&quot;&quot;})</span>
+        }
+      &quot;&quot;&quot;
+    )
+  
+    // @LINE:6
+<span class="nc" id="L93">    def index: JavaScriptReverseRoute = JavaScriptReverseRoute(</span>
+<span class="nc" id="L94">      &quot;controllers.TweetMinerController.index&quot;,</span>
+<span class="nc" id="L95">      &quot;&quot;&quot;</span>
+        function() {
+<span class="nc" id="L97">          return _wA({method:&quot;GET&quot;, url:&quot;&quot;&quot;&quot; + _prefix + &quot;&quot;&quot;&quot;})</span>
+        }
+      &quot;&quot;&quot;
+    )
+  
+    // @LINE:8
+<span class="nc" id="L103">    def tweetrouter: JavaScriptReverseRoute = JavaScriptReverseRoute(</span>
+<span class="nc" id="L104">      &quot;controllers.TweetMinerController.tweetrouter&quot;,</span>
+<span class="nc" id="L105">      &quot;&quot;&quot;</span>
+        function() {
+<span class="nc" id="L107">          return _wA({method:&quot;GET&quot;, url:&quot;&quot;&quot;&quot; + _prefix + { _defaultPrefix } + &quot;&quot;&quot;&quot; + &quot;tweets&quot;})</span>
+        }
+      &quot;&quot;&quot;
+    )
+  
+  }
+
+
+<span class="nc" id="L115">}</span>
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.7.9.201702052155</span></div></body></html>

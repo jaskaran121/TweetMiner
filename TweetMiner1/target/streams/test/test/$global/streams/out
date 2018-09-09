@@ -1,0 +1,55 @@
+[0m[[0m[0mdebug[0m] [0m[0mjavaOptions: Vector(-Djacoco-agent.destfile=C:\Users\JASKARN SINGH\Desktop\TweetMiner1\target\scala-2.12\jacoco\data\jacoco.exec)[0m
+[0m[[0m[0mdebug[0m] [0m[0mForking tests - parallelism = false[0m
+[0m[[0m[0mdebug[0m] [0m[0mCreate a single-thread test executor[0m
+[0m[[0m[0mdebug[0m] [0m[0mRunner for com.novocode.junit.JUnitFramework produced 4 initial tasks for 4 tests.[0m
+[0m[[0m[0mdebug[0m] [0m[0m  Running TaskDef(AuthorModelTest1, sbt.ForkMain$AnnotatedFingerscan@31dfd57, false, [SuiteSelector])[0m
+[0m[[0m[0minfo[0m] [0m[0m[34mTest run started[0m[0m
+[0m[[0m[0minfo[0m] [0m[0mTest [33mAuthorModelTest1[0m.[36mtestSetAndGetName[0m started[0m
+[0m[[0m[0mdebug[0m] [0m[0mTest [33mAuthorModelTest1[0m.[36mtestSetAndGetName[0m finished, took 0.232 sec[0m
+[0m[[0m[0minfo[0m] [0m[0mTest [33mAuthorModelTest1[0m.[36mtestSetAndGetScreenName[0m started[0m
+[0m[[0m[0mdebug[0m] [0m[0mTest [33mAuthorModelTest1[0m.[36mtestSetAndGetScreenName[0m finished, took 0.002 sec[0m
+[0m[[0m[0minfo[0m] [0m[0m[34mTest run finished: [0m[34m0 failed[0m[34m, [0m[34m0 ignored[0m[34m, 2 total, 0.293s[0m[0m
+[0m[[0m[0mdebug[0m] [0m[0m    Produced 0 nested tasks and 2 events.[0m
+[0m[[0m[0mdebug[0m] [0m[0m  Running TaskDef(TweetMinerControllerTest, sbt.ForkMain$AnnotatedFingerscan@6dfd75c6, false, [SuiteSelector])[0m
+[0m[[0m[0minfo[0m] [0m[0m[34mTest run started[0m[0m
+[0m[[0m[0minfo[0m] [0m[0mTest [33mTweetMinerControllerTest[0m.[36mtestSetEmotionNeutral[0m started[0m
+[0m[[0m[0mdebug[0m] [0m[0mTest [33mTweetMinerControllerTest[0m.[36mtestSetEmotionNeutral[0m finished, took 0.662 sec[0m
+[0m[[0m[0minfo[0m] [0m[0mTest [33mTweetMinerControllerTest[0m.[36mtestSetEmotionSad[0m started[0m
+[0m[[0m[0mdebug[0m] [0m[0mTest [33mTweetMinerControllerTest[0m.[36mtestSetEmotionSad[0m finished, took 0.003 sec[0m
+[0m[[0m[0minfo[0m] [0m[0mTest [33mTweetMinerControllerTest[0m.[36mtestSetEmotionHappy[0m started[0m
+[0m[[0m[0mdebug[0m] [0m[0mTest [33mTweetMinerControllerTest[0m.[36mtestSetEmotionHappy[0m finished, took 0.002 sec[0m
+[0m[[0m[0minfo[0m] [0m[0m[34mTest run finished: [0m[34m0 failed[0m[34m, [0m[34m0 ignored[0m[34m, 3 total, 1.26s[0m[0m
+[0m[[0m[0mdebug[0m] [0m[0m    Produced 0 nested tasks and 3 events.[0m
+[0m[[0m[0mdebug[0m] [0m[0m  Running TaskDef(TweetModelTest1, sbt.ForkMain$AnnotatedFingerscan@27ad9f6d, false, [SuiteSelector])[0m
+[0m[[0m[0minfo[0m] [0m[0m[34mTest run started[0m[0m
+[0m[[0m[0minfo[0m] [0m[0mTest [33mTweetModelTest1[0m.[36mtestSetAndGetLocation[0m started[0m
+[0m[[0m[0mdebug[0m] [0m[0mTest [33mTweetModelTest1[0m.[36mtestSetAndGetLocation[0m finished, took 0.001 sec[0m
+[0m[[0m[0minfo[0m] [0m[0mTest [33mTweetModelTest1[0m.[36mtestSetAndGetLattitude[0m started[0m
+[0m[[0m[0mdebug[0m] [0m[0mTest [33mTweetModelTest1[0m.[36mtestSetAndGetLattitude[0m finished, took 0.009 sec[0m
+[0m[[0m[0minfo[0m] [0m[0mTest [33mTweetModelTest1[0m.[36mtestSetAndGetHashTagList[0m started[0m
+[0m[[0m[0mdebug[0m] [0m[0mTest [33mTweetModelTest1[0m.[36mtestSetAndGetHashTagList[0m finished, took 0.025 sec[0m
+[0m[[0m[0minfo[0m] [0m[0mTest [33mTweetModelTest1[0m.[36mtestSetAndGetTweet[0m started[0m
+[0m[[0m[0mdebug[0m] [0m[0mTest [33mTweetModelTest1[0m.[36mtestSetAndGetTweet[0m finished, took 0.001 sec[0m
+[0m[[0m[0minfo[0m] [0m[0mTest [33mTweetModelTest1[0m.[36mtestSetAndGetLongitude[0m started[0m
+[0m[[0m[0mdebug[0m] [0m[0mTest [33mTweetModelTest1[0m.[36mtestSetAndGetLongitude[0m finished, took 0.001 sec[0m
+[0m[[0m[0minfo[0m] [0m[0mTest [33mTweetModelTest1[0m.[36mtestSetAndGetGeoLocation[0m started[0m
+[0m[[0m[0mdebug[0m] [0m[0mTest [33mTweetModelTest1[0m.[36mtestSetAndGetGeoLocation[0m finished, took 0.0 sec[0m
+[0m[[0m[0minfo[0m] [0m[0mTest [33mTweetModelTest1[0m.[36mtestSetAndGetAuthor[0m started[0m
+[0m[[0m[0mdebug[0m] [0m[0mTest [33mTweetModelTest1[0m.[36mtestSetAndGetAuthor[0m finished, took 0.002 sec[0m
+[0m[[0m[0minfo[0m] [0m[0m[34mTest run finished: [0m[34m0 failed[0m[34m, [0m[34m0 ignored[0m[34m, 7 total, 0.045s[0m[0m
+[0m[[0m[0mdebug[0m] [0m[0m    Produced 0 nested tasks and 7 events.[0m
+[0m[[0m[0mdebug[0m] [0m[0m  Running TaskDef(SearchKeywordTest1, sbt.ForkMain$AnnotatedFingerscan@442e67c1, false, [SuiteSelector])[0m
+[0m[[0m[0minfo[0m] [0m[0m[34mTest run started[0m[0m
+[0m[[0m[0minfo[0m] [0m[0mTest [33mSearchKeywordTest1[0m.[36mtestSetAndGetName[0m started[0m
+[0m[[0m[0mdebug[0m] [0m[0mTest [33mSearchKeywordTest1[0m.[36mtestSetAndGetName[0m finished, took 0.008 sec[0m
+[0m[[0m[0minfo[0m] [0m[0mTest [33mSearchKeywordTest1[0m.[36mtestConstructor[0m started[0m
+[0m[[0m[0mdebug[0m] [0m[0mTest [33mSearchKeywordTest1[0m.[36mtestConstructor[0m finished, took 0.0 sec[0m
+[0m[[0m[0minfo[0m] [0m[0m[34mTest run finished: [0m[34m0 failed[0m[34m, [0m[34m0 ignored[0m[34m, 2 total, 0.008s[0m[0m
+[0m[[0m[0mdebug[0m] [0m[0m    Produced 0 nested tasks and 2 events.[0m
+[0m[[0m[0mdebug[0m] [0m[0mSummary for JUnit not available.[0m
+[0m[[0m[0minfo[0m] [0m[0mPassed: Total 14, Failed 0, Errors 0, Passed 14[0m
+[0m[[0m[0mdebug[0m] [0m[0mPassed tests:[0m
+[0m[[0m[0mdebug[0m] [0m[0m	TweetMinerControllerTest[0m
+[0m[[0m[0mdebug[0m] [0m[0m	TweetModelTest1[0m
+[0m[[0m[0mdebug[0m] [0m[0m	AuthorModelTest1[0m
+[0m[[0m[0mdebug[0m] [0m[0m	SearchKeywordTest1[0m

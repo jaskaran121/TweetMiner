@@ -1,2 +1,24 @@
+run
+sbt
 compile
+3
+compile
+run
+sbt
+compile
+sbt eclipse
+eclipse
+run
+compile
+test
+run
+test
+run
+compile
+comp
+compile
+run
+test
+jacoco
+doc
 run

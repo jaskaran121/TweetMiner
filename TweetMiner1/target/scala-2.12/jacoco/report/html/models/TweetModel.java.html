@@ -1,0 +1,161 @@
+<?xml version="1.0" encoding="utf-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>TweetModel.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=2;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">Jacoco Coverage Report</a> &gt; <a href="index.source.html" class="el_package">models</a> &gt; <span class="el_source">TweetModel.java</span></div><h1>TweetModel.java</h1><pre class="source lang-java linenums">package models;
+
+import java.util.List;
+
+import play.api.mvc.QueryStringBindable;
+import twitter4j.GeoLocation;
+
+import twitter4j.HashtagEntity;
+
+/**
+ * Defines parameters of tweet.
+ *
+ * @author Jaskaran Singh
+ * @author Gagandeep Singh
+ */
+
+
+<span class="fc" id="L18">public class TweetModel {</span>
+
+	
+	private AuthorModel author;
+	private String tweet;
+	private List&lt;HashtagEntity&gt; hashtags;
+	private double latitude;
+	private String geoLocation;
+	
+	/**
+     * Gets geoLocation of the tweet.
+     *
+     * @return geoLocation of type String
+     */
+	public String getGeoLocation() {
+		return geoLocation;
+	}
+	
+	/**
+     * Sets geoLocation of the tweet.
+     *
+     * @param geoLocation of type String
+     */
+	public void setGeoLocation(String geoLocation) {
+<span class="fc" id="L42">		this.geoLocation = geoLocation;</span>
+<span class="fc" id="L43">	}</span>
+
+	/**
+     * Gets latitude of geolocation.
+     *
+     * @return latitude of double
+     */
+	public double getLatitude() {
+		return latitude;
+	}
+	
+	/**
+     * Sets latitude of geolocation.
+     *
+     * @param latitude of double
+     */
+	public void setLatitude(double latitude) {
+<span class="fc" id="L60">		this.latitude = latitude;</span>
+<span class="fc" id="L61">	}</span>
+
+	/**
+     * Gets longitude of geolocation.
+     *
+     * @return longitude of type double
+     */
+	public double getLongitude() {
+		return longitude;
+	}
+
+	/**
+     * Sets longitude of geolocation.
+     *
+     * @param longitude of type double
+     */
+	public void setLongitude(double longitude) {
+<span class="fc" id="L78">		this.longitude = longitude;</span>
+<span class="fc" id="L79">	}</span>
+
+	private double longitude;
+	
+	
+	/**
+     * Gets Hashtags associated with tweet.
+     *
+     * @return hashtags of type List&lt;HashtagEntity&gt;
+     */
+	public List&lt;HashtagEntity&gt; getHashtags() {
+		return hashtags;
+	}
+
+	/**
+     * Sets Hashtags associated with tweet.
+     *
+     * @param hashtags of type List&lt;HashtagEntity&gt;
+     */
+	public void setHashtags(List&lt;HashtagEntity&gt; hashtags) {
+<span class="fc" id="L99">		this.hashtags = hashtags;</span>
+<span class="fc" id="L100">	}</span>
+
+	private String location;
+	
+	/**
+     * Sets Location of the user.
+     *
+     * @param string of type String
+     */
+	public void setLocation(String string) {
+<span class="fc" id="L110">		this.location = string;</span>
+<span class="fc" id="L111">	}</span>
+
+	/**
+     * Gets Author of the tweet.
+     *
+     * @return author of type AuthorModel
+     */
+	public AuthorModel getAuthor()
+	{
+		return author;
+	}
+	
+	/**
+     * Gets text of Tweet.
+     *
+     * @return tweet of type String
+     */
+	public String getTweet()
+	{
+		return tweet;
+	}
+	
+	/**
+     * Gets Location of the user.
+     *
+     * @return location of type String
+     */
+	public String getLocation()
+	{
+		return location;
+	}
+	
+	/**
+     * Sets Author of the tweet.
+     *
+     * @param author of type AuthorModel
+     */
+	public void setAuthor(AuthorModel author) {
+<span class="fc" id="L149">		this.author = author;</span>
+<span class="fc" id="L150">	}</span>
+	
+	/**
+     * Sets text of Tweet.
+     *
+     * @param tweet of type String
+     */
+	public void setTweet(String tweet) {
+<span class="fc" id="L158">		this.tweet = tweet;</span>
+<span class="fc" id="L159">	}</span>
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.7.9.201702052155</span></div></body></html>

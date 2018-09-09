@@ -1,0 +1,32 @@
+@(hashtag:String , tweets:List[TweetModel])
+<!-- Author Jaskaran -->
+
+
+
+@import helper._
+
+    <html>
+        <head>
+            <title>Search Word</title>
+        </head>
+
+        <body>
+            
+
+            <h1>ALL Tweets using @hashtag </h1>
+            @if(tweets!=null){
+             @for(tweet<-tweets){
+           
+                <b>Author:-</b><a href="@routes.TweetMinerController.getUserData(tweet.getAuthor().getScreenName())">@tweet.getAuthor().getScreenName()</a>
+                <p><b>Tweet:-</b>@tweet.getTweet()</p>
+                 <p><b>Location:-</b>@tweet.getLocation()</p>
+                 <p><b>HashTags:-</b>@for(hashtag<-tweet.getHashtags()){
+                 
+                  <a href="@routes.TweetMinerController.searchHashTag(hashtag.getText())">#@hashtag.getText()</a> 
+                 
+                 }
+                 </p>
+                 <p>------------------------------------------------------------------------------------------------------------------------------------------------</P>
+            }}
+        </body>
+    </html>

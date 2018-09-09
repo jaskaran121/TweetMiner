@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="utf-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>listresult.template.scala</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=2;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">Jacoco Coverage Report</a> &gt; <a href="index.source.html" class="el_package">views.html</a> &gt; <span class="el_source">listresult.template.scala</span></div><h1>listresult.template.scala</h1><pre class="source lang-java linenums">
+package views.html
+
+import _root_.play.twirl.api.TwirlFeatureImports._
+import _root_.play.twirl.api.TwirlHelperImports._
+import _root_.play.twirl.api.Html
+import _root_.play.twirl.api.JavaScript
+import _root_.play.twirl.api.Txt
+import _root_.play.twirl.api.Xml
+import models._
+import controllers._
+import play.api.i18n._
+import views.html._
+import play.api.templates.PlayMagic._
+import java.lang._
+import java.util._
+import scala.collection.JavaConverters._
+import play.core.j.PlayMagicForJava._
+import play.mvc._
+import play.api.data.Field
+import play.mvc.Http.Context.Implicit._
+import play.data._
+import play.core.j.PlayFormsMagicForJava._
+
+<span class="nc" id="L25">object listresult extends _root_.play.twirl.api.BaseScalaTemplate[play.twirl.api.HtmlFormat.Appendable,_root_.play.twirl.api.Format[play.twirl.api.HtmlFormat.Appendable]](play.twirl.api.HtmlFormat) with _root_.play.twirl.api.Template2[Form[SearchKeyword],LinkedHashMap[String, List[TweetModel]],play.twirl.api.HtmlFormat.Appendable] {</span>
+
+  /**/
+  def apply/*1.2*/(searchform : Form[SearchKeyword],tweets:LinkedHashMap[String,List[TweetModel]]):play.twirl.api.HtmlFormat.Appendable = {
+<span class="nc" id="L29">    _display_ {</span>
+      {
+/*6.2*/import helper._
+
+
+<span class="nc" id="L34">Seq[Any](format.raw/*1.82*/(&quot;&quot;&quot;</span>
+<span class="nc" id="L35">&quot;&quot;&quot;),format.raw/*2.1*/(&quot;&quot;&quot;&lt;!-- Author Prabhleen --&gt;</span>
+
+
+
+<span class="nc" id="L39">&quot;&quot;&quot;),format.raw/*7.1*/(&quot;&quot;&quot;</span>
+<span class="nc" id="L40">    &quot;&quot;&quot;),format.raw/*8.5*/(&quot;&quot;&quot;&lt;html&gt;</span>
+        &lt;head&gt;
+            &lt;title&gt;Search Word&lt;/title&gt;
+        &lt;/head&gt;
+
+        &lt;body&gt;
+<span class="nc" id="L46">            &quot;&quot;&quot;),_display_(/*14.14*/helper/*14.20*/.form(action= helper.CSRF(routes.TweetMinerController.search()))/*14.84*/{_display_(Seq[Any](format.raw/*14.85*/(&quot;&quot;&quot;</span>
+                &quot;&quot;&quot;),_display_(/*15.18*/helper/*15.24*/.inputText(searchform(&quot;keyword&quot;))),format.raw/*15.57*/(&quot;&quot;&quot;
+                &quot;&quot;&quot;),format.raw/*16.17*/(&quot;&quot;&quot;&lt;input type=&quot;submit&quot; value=&quot;create&quot;&gt;
+<span class="nc" id="L49">            &quot;&quot;&quot;)))}),format.raw/*17.14*/(&quot;&quot;&quot;</span>
+
+<span class="nc" id="L51">            &quot;&quot;&quot;),format.raw/*19.13*/(&quot;&quot;&quot;&lt;h1&gt;ALL Tweets&lt;/h1&gt;</span>
+<span class="nc bnc" id="L52" title="All 2 branches missed.">            &quot;&quot;&quot;),_display_(/*20.14*/if(tweets!=null)/*20.30*/{_display_(Seq[Any](format.raw/*20.31*/(&quot;&quot;&quot;</span>
+<span class="nc" id="L53">             &quot;&quot;&quot;),_display_(/*21.15*/for((str,t)&lt;-tweets) yield /*21.35*/{_display_(Seq[Any](format.raw/*21.36*/(&quot;&quot;&quot;</span>
+            &quot;&quot;&quot;),format.raw/*22.13*/(&quot;&quot;&quot;&lt;div style=&quot;Float:left;&quot;&gt;&lt;h2&gt;Total &quot;&quot;&quot;),_display_(/*22.49*/t/*22.50*/.length),format.raw/*22.57*/(&quot;&quot;&quot; &quot;&quot;&quot;),format.raw/*22.58*/(&quot;&quot;&quot;tweets fetched for Keyword  &lt;a href=&quot;&quot;&quot;&quot;),_display_(/*22.96*/routes/*22.102*/.TweetMinerController.appendString(str)),format.raw/*22.141*/(&quot;&quot;&quot;&quot;&gt;&quot;&quot;&quot;),_display_(/*22.144*/str),format.raw/*22.147*/(&quot;&quot;&quot;&lt;/a&gt; &lt;/h2&gt;&lt;/div&gt;
+            &quot;&quot;&quot;),_display_(/*23.14*/for(tweet&lt;-t) yield /*23.27*/{_display_(Seq[Any](format.raw/*23.28*/(&quot;&quot;&quot;
+            &quot;&quot;&quot;),format.raw/*24.13*/(&quot;&quot;&quot;&lt;div style=&quot;background-color:lightblue&quot;&gt;
+                &lt;b&gt;Author:-&lt;/b&gt;&lt;a href=&quot;&quot;&quot;&quot;),_display_(/*25.42*/routes/*25.48*/.TweetMinerController.getUserData(tweet.getAuthor().getScreenName())),format.raw/*25.116*/(&quot;&quot;&quot;&quot;&gt;&quot;&quot;&quot;),_display_(/*25.119*/tweet/*25.124*/.getAuthor().getScreenName()),format.raw/*25.152*/(&quot;&quot;&quot;&lt;/a&gt;
+                &lt;p&gt;&lt;b&gt;Tweet:-&lt;/b&gt;&quot;&quot;&quot;),_display_(/*26.35*/tweet/*26.40*/.getTweet()),format.raw/*26.51*/(&quot;&quot;&quot;&lt;/p&gt;
+                &lt;p&gt;&lt;b&gt;Location:-&lt;/b&gt;&lt;a href=&quot;&quot;&quot;&quot;),_display_(/*27.47*/routes/*27.53*/.TweetMinerController.getLatLongPositions(tweet.getLocation())),format.raw/*27.115*/(&quot;&quot;&quot;&quot;&gt;&quot;&quot;&quot;),_display_(/*27.118*/tweet/*27.123*/.getLocation()),format.raw/*27.137*/(&quot;&quot;&quot;&lt;/a&gt;&lt;/p&gt;
+                 &lt;p&gt;&lt;b&gt;HashTags:-&lt;/b&gt;&quot;&quot;&quot;),_display_(/*28.39*/for(hashtag&lt;-tweet.getHashtags()) yield /*28.72*/{_display_(Seq[Any](format.raw/*28.73*/(&quot;&quot;&quot;
+                 
+                 &quot;&quot;&quot;),format.raw/*30.18*/(&quot;&quot;&quot;&lt;a href=&quot;&quot;&quot;&quot;),_display_(/*30.28*/routes/*30.34*/.TweetMinerController.searchHashTag(hashtag.getText())),format.raw/*30.88*/(&quot;&quot;&quot;&quot;&gt;#&quot;&quot;&quot;),_display_(/*30.92*/hashtag/*30.99*/.getText()),format.raw/*30.109*/(&quot;&quot;&quot;&lt;/a&gt; 
+                 
+                 &quot;&quot;&quot;)))}),format.raw/*32.19*/(&quot;&quot;&quot;
+                 &quot;&quot;&quot;),format.raw/*33.18*/(&quot;&quot;&quot;&lt;/p&gt;
+                 &lt;p&gt;------------------------------------------------------------------------------------------------------------------------------------------------&lt;/P&gt;
+                &lt;/div&gt; 
+<span class="nc" id="L68">            &quot;&quot;&quot;)))})))})))}),format.raw/*36.16*/(&quot;&quot;&quot;</span>
+<span class="nc" id="L69">        &quot;&quot;&quot;),format.raw/*37.9*/(&quot;&quot;&quot;&lt;/body&gt;</span>
+    &lt;/html&gt;&quot;&quot;&quot;))
+      }
+    }
+  }
+
+<span class="nc" id="L75">  def render(searchform:Form[SearchKeyword],tweets:LinkedHashMap[String, List[TweetModel]]): play.twirl.api.HtmlFormat.Appendable = apply(searchform,tweets)</span>
+
+<span class="nc" id="L77">  def f:((Form[SearchKeyword],LinkedHashMap[String, List[TweetModel]]) =&gt; play.twirl.api.HtmlFormat.Appendable) = (searchform,tweets) =&gt; apply(searchform,tweets)</span>
+
+<span class="nc" id="L79">  def ref: this.type = this</span>
+
+}
+
+
+              /*
+                  -- GENERATED --
+                  DATE: Tue Jul 31 21:35:03 EDT 2018
+                  SOURCE: C:/Users/JASKARN SINGH/Desktop/TweetMiner1/app/views/listresult.scala.html
+                  HASH: 185f5cfa2fadcab76e512083a2c387dddd1d83e9
+                  MATRIX: 1006-&gt;1|1159-&gt;117|1204-&gt;81|1232-&gt;83|1291-&gt;134|1323-&gt;140|1462-&gt;252|1477-&gt;258|1550-&gt;322|1589-&gt;323|1635-&gt;342|1650-&gt;348|1704-&gt;381|1750-&gt;399|1832-&gt;450|1876-&gt;466|1937-&gt;500|1962-&gt;516|2001-&gt;517|2044-&gt;533|2080-&gt;553|2119-&gt;554|2161-&gt;568|2224-&gt;604|2234-&gt;605|2262-&gt;612|2291-&gt;613|2356-&gt;651|2372-&gt;657|2433-&gt;696|2464-&gt;699|2489-&gt;702|2547-&gt;733|2576-&gt;746|2615-&gt;747|2657-&gt;761|2767-&gt;844|2782-&gt;850|2872-&gt;918|2903-&gt;921|2918-&gt;926|2968-&gt;954|3035-&gt;994|3049-&gt;999|3081-&gt;1010|3160-&gt;1062|3175-&gt;1068|3259-&gt;1130|3290-&gt;1133|3305-&gt;1138|3341-&gt;1152|3416-&gt;1200|3465-&gt;1233|3504-&gt;1234|3570-&gt;1272|3607-&gt;1282|3622-&gt;1288|3697-&gt;1342|3728-&gt;1346|3744-&gt;1353|3776-&gt;1363|3851-&gt;1407|3898-&gt;1426|4151-&gt;1642|4188-&gt;1652
+                  LINES: 28-&gt;1|31-&gt;6|34-&gt;1|35-&gt;2|39-&gt;7|40-&gt;8|46-&gt;14|46-&gt;14|46-&gt;14|46-&gt;14|47-&gt;15|47-&gt;15|47-&gt;15|48-&gt;16|49-&gt;17|51-&gt;19|52-&gt;20|52-&gt;20|52-&gt;20|53-&gt;21|53-&gt;21|53-&gt;21|54-&gt;22|54-&gt;22|54-&gt;22|54-&gt;22|54-&gt;22|54-&gt;22|54-&gt;22|54-&gt;22|54-&gt;22|54-&gt;22|55-&gt;23|55-&gt;23|55-&gt;23|56-&gt;24|57-&gt;25|57-&gt;25|57-&gt;25|57-&gt;25|57-&gt;25|57-&gt;25|58-&gt;26|58-&gt;26|58-&gt;26|59-&gt;27|59-&gt;27|59-&gt;27|59-&gt;27|59-&gt;27|59-&gt;27|60-&gt;28|60-&gt;28|60-&gt;28|62-&gt;30|62-&gt;30|62-&gt;30|62-&gt;30|62-&gt;30|62-&gt;30|62-&gt;30|64-&gt;32|65-&gt;33|68-&gt;36|69-&gt;37
+                  -- GENERATED --
+              */
+          
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.7.9.201702052155</span></div></body></html>

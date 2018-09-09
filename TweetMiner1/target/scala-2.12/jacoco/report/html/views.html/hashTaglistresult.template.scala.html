@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="utf-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>hashTaglistresult.template.scala</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=2;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">Jacoco Coverage Report</a> &gt; <a href="index.source.html" class="el_package">views.html</a> &gt; <span class="el_source">hashTaglistresult.template.scala</span></div><h1>hashTaglistresult.template.scala</h1><pre class="source lang-java linenums">
+package views.html
+
+import _root_.play.twirl.api.TwirlFeatureImports._
+import _root_.play.twirl.api.TwirlHelperImports._
+import _root_.play.twirl.api.Html
+import _root_.play.twirl.api.JavaScript
+import _root_.play.twirl.api.Txt
+import _root_.play.twirl.api.Xml
+import models._
+import controllers._
+import play.api.i18n._
+import views.html._
+import play.api.templates.PlayMagic._
+import java.lang._
+import java.util._
+import scala.collection.JavaConverters._
+import play.core.j.PlayMagicForJava._
+import play.mvc._
+import play.api.data.Field
+import play.mvc.Http.Context.Implicit._
+import play.data._
+import play.core.j.PlayFormsMagicForJava._
+
+<span class="nc" id="L25">object hashTaglistresult extends _root_.play.twirl.api.BaseScalaTemplate[play.twirl.api.HtmlFormat.Appendable,_root_.play.twirl.api.Format[play.twirl.api.HtmlFormat.Appendable]](play.twirl.api.HtmlFormat) with _root_.play.twirl.api.Template2[String,List[TweetModel],play.twirl.api.HtmlFormat.Appendable] {</span>
+
+  /**/
+  def apply/*1.2*/(hashtag:String , tweets:List[TweetModel]):play.twirl.api.HtmlFormat.Appendable = {
+<span class="nc" id="L29">    _display_ {</span>
+      {
+/*6.2*/import helper._
+
+
+<span class="nc" id="L34">Seq[Any](format.raw/*1.44*/(&quot;&quot;&quot;</span>
+<span class="nc" id="L35">&quot;&quot;&quot;),format.raw/*2.1*/(&quot;&quot;&quot;&lt;!-- Author Jaskaran --&gt;</span>
+
+
+
+<span class="nc" id="L39">&quot;&quot;&quot;),format.raw/*7.1*/(&quot;&quot;&quot;</span>
+<span class="nc" id="L40">    &quot;&quot;&quot;),format.raw/*8.5*/(&quot;&quot;&quot;&lt;html&gt;</span>
+        &lt;head&gt;
+            &lt;title&gt;Search Word&lt;/title&gt;
+        &lt;/head&gt;
+
+        &lt;body&gt;
+            
+
+<span class="nc" id="L48">            &lt;h1&gt;ALL Tweets using &quot;&quot;&quot;),_display_(/*16.35*/hashtag),format.raw/*16.42*/(&quot;&quot;&quot; &quot;&quot;&quot;),format.raw/*16.43*/(&quot;&quot;&quot;&lt;/h1&gt;</span>
+<span class="nc bnc" id="L49" title="All 2 branches missed.">            &quot;&quot;&quot;),_display_(/*17.14*/if(tweets!=null)/*17.30*/{_display_(Seq[Any](format.raw/*17.31*/(&quot;&quot;&quot;</span>
+<span class="nc" id="L50">             &quot;&quot;&quot;),_display_(/*18.15*/for(tweet&lt;-tweets) yield /*18.33*/{_display_(Seq[Any](format.raw/*18.34*/(&quot;&quot;&quot;</span>
+           
+                &quot;&quot;&quot;),format.raw/*20.17*/(&quot;&quot;&quot;&lt;b&gt;Author:-&lt;/b&gt;&lt;a href=&quot;&quot;&quot;&quot;),_display_(/*20.42*/routes/*20.48*/.TweetMinerController.getUserData(tweet.getAuthor().getScreenName())),format.raw/*20.116*/(&quot;&quot;&quot;&quot;&gt;&quot;&quot;&quot;),_display_(/*20.119*/tweet/*20.124*/.getAuthor().getScreenName()),format.raw/*20.152*/(&quot;&quot;&quot;&lt;/a&gt;
+                &lt;p&gt;&lt;b&gt;Tweet:-&lt;/b&gt;&quot;&quot;&quot;),_display_(/*21.35*/tweet/*21.40*/.getTweet()),format.raw/*21.51*/(&quot;&quot;&quot;&lt;/p&gt;
+                 &lt;p&gt;&lt;b&gt;Location:-&lt;/b&gt;&quot;&quot;&quot;),_display_(/*22.39*/tweet/*22.44*/.getLocation()),format.raw/*22.58*/(&quot;&quot;&quot;&lt;/p&gt;
+                 &lt;p&gt;&lt;b&gt;HashTags:-&lt;/b&gt;&quot;&quot;&quot;),_display_(/*23.39*/for(hashtag&lt;-tweet.getHashtags()) yield /*23.72*/{_display_(Seq[Any](format.raw/*23.73*/(&quot;&quot;&quot;
+                 
+                  &quot;&quot;&quot;),format.raw/*25.19*/(&quot;&quot;&quot;&lt;a href=&quot;&quot;&quot;&quot;),_display_(/*25.29*/routes/*25.35*/.TweetMinerController.searchHashTag(hashtag.getText())),format.raw/*25.89*/(&quot;&quot;&quot;&quot;&gt;#&quot;&quot;&quot;),_display_(/*25.93*/hashtag/*25.100*/.getText()),format.raw/*25.110*/(&quot;&quot;&quot;&lt;/a&gt; 
+                 
+                 &quot;&quot;&quot;)))}),format.raw/*27.19*/(&quot;&quot;&quot;
+                 &quot;&quot;&quot;),format.raw/*28.18*/(&quot;&quot;&quot;&lt;/p&gt;
+                 &lt;p&gt;------------------------------------------------------------------------------------------------------------------------------------------------&lt;/P&gt;
+<span class="nc" id="L62">            &quot;&quot;&quot;)))})))}),format.raw/*30.15*/(&quot;&quot;&quot;</span>
+<span class="nc" id="L63">        &quot;&quot;&quot;),format.raw/*31.9*/(&quot;&quot;&quot;&lt;/body&gt;</span>
+    &lt;/html&gt;&quot;&quot;&quot;))
+      }
+    }
+  }
+
+<span class="nc" id="L69">  def render(hashtag:String,tweets:List[TweetModel]): play.twirl.api.HtmlFormat.Appendable = apply(hashtag,tweets)</span>
+
+<span class="nc" id="L71">  def f:((String,List[TweetModel]) =&gt; play.twirl.api.HtmlFormat.Appendable) = (hashtag,tweets) =&gt; apply(hashtag,tweets)</span>
+
+<span class="nc" id="L73">  def ref: this.type = this</span>
+
+}
+
+
+              /*
+                  -- GENERATED --
+                  DATE: Tue Jul 31 16:35:00 EDT 2018
+                  SOURCE: C:/Users/JASKARN SINGH/Desktop/TweetMiner1/app/views/hashTaglistresult.scala.html
+                  HASH: 62e321ff435f4375b3e953643847139a0399f99f
+                  MATRIX: 977-&gt;1|1092-&gt;78|1137-&gt;43|1165-&gt;45|1223-&gt;95|1255-&gt;101|1431-&gt;250|1459-&gt;257|1488-&gt;258|1535-&gt;278|1560-&gt;294|1599-&gt;295|1642-&gt;311|1676-&gt;329|1715-&gt;330|1774-&gt;361|1826-&gt;386|1841-&gt;392|1931-&gt;460|1962-&gt;463|1977-&gt;468|2027-&gt;496|2094-&gt;536|2108-&gt;541|2140-&gt;552|2211-&gt;596|2225-&gt;601|2260-&gt;615|2331-&gt;659|2380-&gt;692|2419-&gt;693|2486-&gt;732|2523-&gt;742|2538-&gt;748|2613-&gt;802|2644-&gt;806|2661-&gt;813|2693-&gt;823|2768-&gt;867|2815-&gt;886|3039-&gt;1076|3076-&gt;1086
+                  LINES: 28-&gt;1|31-&gt;6|34-&gt;1|35-&gt;2|39-&gt;7|40-&gt;8|48-&gt;16|48-&gt;16|48-&gt;16|49-&gt;17|49-&gt;17|49-&gt;17|50-&gt;18|50-&gt;18|50-&gt;18|52-&gt;20|52-&gt;20|52-&gt;20|52-&gt;20|52-&gt;20|52-&gt;20|52-&gt;20|53-&gt;21|53-&gt;21|53-&gt;21|54-&gt;22|54-&gt;22|54-&gt;22|55-&gt;23|55-&gt;23|55-&gt;23|57-&gt;25|57-&gt;25|57-&gt;25|57-&gt;25|57-&gt;25|57-&gt;25|57-&gt;25|59-&gt;27|60-&gt;28|62-&gt;30|63-&gt;31
+                  -- GENERATED --
+              */
+          
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.7.9.201702052155</span></div></body></html>

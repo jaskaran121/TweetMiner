@@ -1,6 +1,6 @@
 // @GENERATOR:play-routes-compiler
-// @SOURCE:C:/Users/JASKARN SINGH/Documents/GitHub/TweetMiner1/TweetMiner1/conf/routes
-// @DATE:Sat Jul 28 17:33:57 EDT 2018
+// @SOURCE:C:/Users/JASKARN SINGH/Desktop/TweetMiner1/conf/routes
+// @DATE:Tue Jul 31 21:28:17 EDT 2018
 
 import play.api.mvc.Call
 
@@ -11,14 +11,14 @@ import _root_.play.libs.F
 // @LINE:6
 package controllers {
 
-  // @LINE:10
+  // @LINE:14
   class ReverseAssets(_prefix: => String) {
     def _defaultPrefix: String = {
       if (_prefix.endsWith("/")) "" else "/"
     }
 
   
-    // @LINE:10
+    // @LINE:14
     def versioned(file:Asset): Call = {
       implicit lazy val _rrc = new play.core.routing.ReverseRouteContext(Map(("path", "/public"))); _rrc
       Call("GET", _prefix + { _defaultPrefix } + "assets/" + implicitly[play.api.mvc.PathBindable[Asset]].unbind("file", file))
@@ -33,16 +33,46 @@ package controllers {
     }
 
   
-    // @LINE:6
-    def index(): Call = {
+    // @LINE:9
+    def getLatLongPositions(address:String): Call = {
       
-      Call("GET", _prefix)
+      Call("GET", _prefix + { _defaultPrefix } + "Location" + play.core.routing.queryString(List(Some(implicitly[play.api.mvc.QueryStringBindable[String]].unbind("address", address)))))
+    }
+  
+    // @LINE:12
+    def searchHashTag(searchKeyword:String): Call = {
+      
+      Call("GET", _prefix + { _defaultPrefix } + "HashTaglistresult" + play.core.routing.queryString(List(Some(implicitly[play.api.mvc.QueryStringBindable[String]].unbind("searchKeyword", searchKeyword)))))
+    }
+  
+    // @LINE:10
+    def getUserData(screenName:String): Call = {
+      
+      Call("GET", _prefix + { _defaultPrefix } + "userdata" + play.core.routing.queryString(List(Some(implicitly[play.api.mvc.QueryStringBindable[String]].unbind("screenName", screenName)))))
+    }
+  
+    // @LINE:11
+    def appendString(searchKeyword:String): Call = {
+      
+      Call("GET", _prefix + { _defaultPrefix } + "index1" + play.core.routing.queryString(List(Some(implicitly[play.api.mvc.QueryStringBindable[String]].unbind("searchKeyword", searchKeyword)))))
     }
   
     // @LINE:7
     def search(): Call = {
       
       Call("POST", _prefix)
+    }
+  
+    // @LINE:6
+    def index(): Call = {
+      
+      Call("GET", _prefix)
+    }
+  
+    // @LINE:8
+    def tweetrouter(): Call = {
+      
+      Call("GET", _prefix + { _defaultPrefix } + "tweets")
     }
   
   }
