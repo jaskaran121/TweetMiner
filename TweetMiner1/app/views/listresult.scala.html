@@ -1,0 +1,21 @@
+@(searchform : Form[SearchKeyword],keywords:Set[SearchKeyword])
+@import helper._
+
+    <html>
+        <head>
+            <title>Create Book</title>
+        </head>
+
+        <body>
+            @helper.form(action= helper.CSRF(routes.TweetMinerController.search())){
+                @helper.inputText(searchform("keyword"))
+                <input type="submit" value="create">
+            }
+
+            <h1>ALL books</h1>
+            @if(keywords!=null){
+            @for(keywrd<-keywords){
+                <p>@keywrd.getKeyword()</p>
+            }}
+        </body>
+    </html>
